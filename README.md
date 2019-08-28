@@ -28,7 +28,7 @@ Run tests by running npm tests.
 - Display information on the page while maintaining ability to test class properties and methods
 - Create a data dashboard that is easy to use and displays information in a clear way
 
-![screencapture](https://github.com/posi7790/fitlit/blob/master/images/screencapture)
+![screencapture](https://github.com/posi7790/fitlit/blob/master/images/screencapture.png)
 
 ## Created By 
 Pol Antoni Sieira
