@@ -150,7 +150,8 @@ $(document).ready(function () {
       scales: {
         yAxes: [{
           ticks: {
-            beginAtZero: true
+            beginAtZero: true,
+            fontColor: "rgba(92, 117, 218, 0.6)"
           },
           scaleLabel: {
             display: true,
@@ -164,7 +165,8 @@ $(document).ready(function () {
           ticks: {
             beginAtZero: true,
             min: 0,
-            max: 10
+            max: 10,
+            fontColor: "rgba(242, 188, 51, 0.6)"
           },
           scaleLabel: {
             display: true,
