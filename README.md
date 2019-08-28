@@ -31,5 +31,4 @@ Run tests by running npm tests.
 ![screencapture](https://github.com/posi7790/fitlit/blob/master/images/screencapture.png)
 
 ## Created By 
-Pol Antoni Sieira
-Ayla Dharamsey
+Ayla Dharamsey & Pol Antoni Sieira 
