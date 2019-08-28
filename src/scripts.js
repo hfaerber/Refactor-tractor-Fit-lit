@@ -36,7 +36,7 @@ $(document).ready(function () {
   //Packery Items 
   let $grid = $('.grid').packery({
     itemSelector: '.grid-item',
-    columnWidth: 50,
+    columnWidth: 30,
     rowHeight: 30,
     gutter: 4,
   });
