@@ -422,6 +422,4 @@ const activityData = [
     ]
 
 
-if(typeof module !== 'undefined'){
-    module.exports = activityData;
-  }
+export default activityData;

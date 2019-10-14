@@ -1,15 +1,48 @@
+
+import $ from 'jquery';
+
+import UserRepo from "./UserRepo";
+import User from "./User";
+import Hydration from "./Hydration";
+import Sleep from "./Sleep";
+import SleepRepo from "./SleepRepo";
+import Activity from "./Activity";
+import ActivityRepo from "./ActivityRepo";
+
+import activityData from "../data/activity";
+import allSleepData from "../data/sleep";
+import userData from "../data/users";
+import hydrationData from "../data/hydration";
+
+// An example of how you tell webpack to use a CSS (SCSS) file
+import './css/normalize.css';
+import './css/styles.css';
+
+// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+import './images/appointment.svg'
+import './images/drop.svg'
+import './images/footsteps-silhouette-variant.svg'
+import './images/goal.svg'
+import './images/logo.png'
+import './images/moon.svg'
+import './images/road.svg'
+import './images/screencapture.png'
+import './images/stopwatch.svg'
+import './images/trophy.svg'
+
+
 //Generate random user 
 const uniqueUserIndex = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
 
 //Repo variables
 const userRepo = new UserRepo(userData);
-const sleepRepo = new SleepRepo(sleepData);
+const sleepRepo = new SleepRepo(allSleepData);
 const activityRepo = new ActivityRepo(activityData, userData);
 
 //Individual Class Repos
 const user = new User(userData[uniqueUserIndex]);
 const hydration = new Hydration(hydrationData, user.id);
-const sleep = new Sleep(sleepData, user.id);
+const sleep = new Sleep(allSleepData, user.id);
 const activity = new Activity(activityData, user);
 
 //Date
@@ -34,21 +67,21 @@ function dropYear(dates) {
 $(document).ready(function () {
 
   //Packery Items 
-  let $grid = $('.grid').packery({
-    itemSelector: '.grid-item',
-    columnWidth: 30,
-    rowHeight: 30,
-    gutter: 4,
-  });
+  // let $grid = $('.grid').packery({
+  //   itemSelector: '.grid-item',
+  //   columnWidth: 30,
+  //   rowHeight: 30,
+  //   gutter: 4,
+  // });
 
-  let $draggable = $('.draggable').draggabilly({
-    containment: true
-  });
+  // let $draggable = $('.draggable').draggabilly({
+  //   containment: true
+  // });
 
-  $grid.find('.grid-item').each(function (i, gridItem) {
-    let draggie = new Draggabilly(gridItem)
-    $grid.packery('bindDraggabillyEvents', draggie)
-  });
+  // $grid.find('.grid-item').each(function (i, gridItem) {
+  //   let draggie = new Draggabilly(gridItem)
+  //   $grid.packery('bindDraggabillyEvents', draggie)
+  // });
 
 
   // Function to find user name

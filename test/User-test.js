@@ -1,8 +1,9 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const userData = require('../data/users-test-data');
-const User = require('../src/User');
+
+import userData from '../data/users-test-data';
+import User from '../src/User';
 
 describe('User', () => {
 

@@ -1,4 +1,4 @@
-const sleepData = [{
+const allSleepData = [{
   "userID": 1,
   "date": "2019/06/15",
   "hoursSlept": 6.1,
@@ -30000,6 +30000,4 @@ const sleepData = [{
 }
 ];
 
-if (typeof module !== 'undefined') {
-  module.exports = sleepData;
-}
+export default allSleepData;

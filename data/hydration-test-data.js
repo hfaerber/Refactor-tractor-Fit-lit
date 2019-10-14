@@ -201,6 +201,4 @@ const hydrationData = [
   },
 ];
 
-if(typeof module !== 'undefined'){
-  module.exports = hydrationData;
-}
+export default hydrationData;

@@ -4,19 +4,32 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha",
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "test": "mochapack 'test/**/*.js'",
     "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
   },
   "author": "Turing School of Software and Design",
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.2.0",
+    "css-loader": "^3.2.0",
     "eslint": "^5.16.0",
-    "mocha": "^6.1.4"
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mocha": "^6.1.4",
+    "mochapack": "^1.1.5",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.1",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
   },
   "dependencies": {
     "@shopify/draggable": "^1.0.0-beta.8",
     "draggabilly": "^2.2.0",
+    "jquery": "^3.4.1",
     "packery": "^2.1.2",
     "progressbar.js": "^1.0.1"
   }

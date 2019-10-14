@@ -1,10 +1,12 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const activityData = require('../data/activity-test-data');
-const userData = require('../data/users-test-data');
+import activityData from '../data/activity-test-data';
+import userData from '../data/users-test-data';
 
-const ActivityRepo = require('../src/ActivityRepo');
+import ActivityRepo from '../src/ActivityRepo';
+
+
 
 describe('ActivityRepo', () => {
 

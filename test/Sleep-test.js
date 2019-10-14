@@ -1,12 +1,13 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const userData = require('../data/users-test-data');
-const sleepData = require('../data/sleep-test-data');
-const allSleepData = require('../data/sleep');
+import sleepData from '../data/sleep-test-data';
+import userData from '../data/users-test-data';
+import allSleepData from '../data/sleep';
 
-const User = require('../src/User')
-const Sleep = require('../src/Sleep');
+import Sleep from '../src/Sleep';
+import User from '../src/User';
+
 
 describe('Sleep', () => {
 

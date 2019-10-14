@@ -1,11 +1,11 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const activityData = require('../data/activity-test-data');
-const userData = require('../data/users-test-data');
+import activityData from '../data/activity-test-data';
+import userData from '../data/users-test-data';
 
-const Activity = require('../src/Activity');
-const User = require('../src/User');
+import Activity from '../src/Activity';
+import User from '../src/User';
 
 
 describe('Activity', () => {

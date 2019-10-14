@@ -1,10 +1,10 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const sleepData = require('../data/sleep-test-data');
-const allSleepData = require('../data/sleep')
+import sleepData from '../data/sleep-test-data';
+import allSleepData from '../data/sleep';
+import SleepRepo from '../src/SleepRepo';
 
-const SleepRepo = require('../src/SleepRepo');
 
 describe('SleepRepo', () => {
 

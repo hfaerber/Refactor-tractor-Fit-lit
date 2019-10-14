@@ -1,12 +1,11 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const hydrationData = require('../data/hydration-test-data');
-const userData = require('../data/users-test-data');
+import hydrationData from '../data/hydration-test-data';
+import userData from '../data/users-test-data';
 
-
-const Hydration = require('../src/Hydration');
-const User = require('../src/User');
+import Hydration from '../src/Hydration';
+import User from '../src/User';
 
 
 describe('Hydration', () => {
