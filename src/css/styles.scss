@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'mixins';
+
 *,
 *:before,
 *:after {
@@ -5,22 +8,22 @@
 }
 
 body {
-  background-color: #EAEBEF;
+  background-color: $body-background-color;
   font-family: 'Open Sans', sans-serif;
-  margin: 0px;
+  margin: $margin-none;
   min-width: 320px;
   padding: 10px;
 }
 
 h2 {
   font-size: 2em;
-  font-weight: 300;
-  color: #5C75DA;
+  @include font-weight(300);
+  color: $header-font-color;
   letter-spacing: .9px
 }
 
 .username {
-  font-weight: 600;
+  @include font-weight(600);
 }
 
 canvas {
@@ -34,23 +37,22 @@ canvas {
 }
 
 .date {
-  background-color: #5C75DA;
+  background-color: $header-font-color;
   border-radius: 3px;
   float: right;
   font-size: 10px;
-  margin: 5px 5px;
+  margin: $margin-5px;
   padding: 3px 5px;
   width: 175px;
-  color: #EAEBEF;
-  font-weight: 600;
-
+  color: $body-background-color;
+  @include font-weight(600);
 }
 
 .logo {
   align-items: center;
   display: inline-block;
   font-size: 20px;
-  margin: 0px;
+  margin: $margin-none;
   width: 83%;
 }
 
@@ -66,10 +68,10 @@ canvas {
 }
 
 .data-section {
-  background-color: #FEFEFE;
+  background-color: $data-card-background-color;
   border-radius: 3px;
-  margin: 5px;
-  padding: 15px 15px;
+  margin: $margin-5px;
+  padding: 15px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
   width: 30%;
@@ -82,14 +84,14 @@ canvas {
 .data-heading {
   margin: 0px 0px 15px 0px;
   font-size: 1.5em;
-  font-weight: 200;
-  color: #5C75DA;
+  @include font-weight(200);
+  color: $header-font-color;
   letter-spacing: 1px;
 }
 
 .data-article {
-  font-weight: 300;
-  font-weight: .8em;
+  @include font-weight(300);
+  // @include font-weight(.8em);
   margin: 40px 0px;
   text-align: center;
 }
@@ -100,13 +102,13 @@ canvas {
 
 .subtext {
   font-size: 10px;
-  font-weight: 700;
-  margin: 5px;
-  color: #5C75DA;
+  @include font-weight(700);
+  margin: $margin-5px;
+  color: $header-font-color;
 }
 
 .water-consumed {
-  margin: 5px;
+  margin: $margin-5px;
 }
 
 .number-of-steps-day {
@@ -144,7 +146,7 @@ img {
 }
 
 .border {
-  border-right: 2px solid #5C75DA;
+  border-right: 2px solid $header-font-color;
   height: 100px;
   margin-top: 15px;
 }
@@ -154,11 +156,11 @@ img {
 }
 
 h4 {
-  font-weight: 600;
+  @include font-weight(600);
   font-size: 1em;
 }
 
 p {
-  font-weight: 200;
+  @include font-weight(200);
   font-size: 1em;
 }
