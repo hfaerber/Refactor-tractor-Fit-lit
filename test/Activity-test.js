@@ -71,7 +71,7 @@ describe('Activity', () => {
   });
 
   it('should return alltime stair climbing record ', () => {
-    expect(activity.returnStepRecord()).to.equal(36);
+    expect(activity.returnStairRecord()).to.equal(36);
   });
 
   it('should return all friends\' step count for the week ', () => {
