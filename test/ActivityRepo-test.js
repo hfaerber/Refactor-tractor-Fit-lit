@@ -31,8 +31,20 @@ describe('ActivityRepo', () => {
     expect(activityRepo.returnAverage("2019/06/15", 'minutesActive')).to.equal(144);
   });
 
-  it('should return the highest minutes active of all time', () => {
-    expect(activityRepo.returnMostActive()).to.eql(['Luisa Hane', 275]);
-  });
+    describe('returnMostActive', () => {
+
+      it('should return the highest minutes active of all time', () => {
+        expect(activityRepo.returnMostActive('minutesActive')).to.eql(['Luisa Hane', 275]);
+      });
+
+      it('should return the highest number of steps of all time', () => {
+        expect(activityRepo.returnMostActive('numSteps')).to.eql(['Mae Connelly', 14547]);
+      });
+
+      it('should return the highest number of stairs of all time', () => {
+        expect(activityRepo.returnMostActive('flightsOfStairs')).to.eql(['Herminia Witting', 46]);
+      });
+
+    })
 
 })
