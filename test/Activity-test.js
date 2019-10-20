@@ -8,7 +8,7 @@ import Activity from '../src/Activity';
 import User from '../src/User';
 
 
-describe('Activity', () => {
+describe.only('Activity', () => {
   let user;
   let activity;
 
@@ -38,19 +38,19 @@ describe('Activity', () => {
   });
 
   it('should return number of flights of stairs climbed by a specific user for a specific day', () => {
-    expect(activity.returnFlightsOfStairs("2019/06/17")).to.equal(18);
+    expect(activity.returnDaysActivityInfo("2019/06/17", 'flightsOfStairs')).to.equal(18);
   });
 
   it('should return the minutes active for a day', () => {
-    expect(activity.returnMinutesActive("2019/06/26")).to.equal(219);
+    expect(activity.returnDaysActivityInfo("2019/06/26", 'minutesActive')).to.equal(219);
   });
 
   it('should return the average minutes active for a week', () => {
-    expect(activity.returnAverageMinutesActiveForWeek(1)).to.equal(148);
+    expect(activity.returnAverageActivityForWeek(1, 'minutesActive')).to.equal(148);
   });
 
   it('should return the average steps for a week', () => {
-    expect(activity.returnAverageStepsForWeek(1)).to.equal(7908);
+    expect(activity.returnAverageActivityForWeek(1, 'numSteps')).to.equal(7908);
   });
 
   it('should return the average steps for a week', () => {
