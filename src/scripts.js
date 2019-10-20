@@ -262,7 +262,7 @@ $(document).ready(function () {
   $('.stairs').text(`${activity.returnFlightsOfStairs(date)}`);
   $('.average-stairs').text(`${activityRepo.returnAverage(date, 'flightsOfStairs')}`)
   $('.distance-in-miles').text(`${activity.returnMilesWalked()} Miles`);
-  $('.most-active').text(`${activityRepo.returnMostActive()[0]}: ${activityRepo.returnMostActive()[1]} minutes`);
+  $('.most-active').text(`${activityRepo.returnMostActive('minutesActive')[0]}: ${activityRepo.returnMostActive('minutesActive')[1]} minutes`);
   $('.week-review-minutes').text(`${activity.returnAverageActivityForWeek(1, 'minutesActive')} minutes active`);
   $('.week-review-steps').text(`${activity.returnAverageActivityForWeek(1, 'numSteps')} steps taken`);
   $('.week-review-stairs').text(`${activity.returnAverageActivityForWeek(1, 'flightsOfStairs')} flights of stairs`);
