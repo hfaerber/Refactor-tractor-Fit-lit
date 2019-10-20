@@ -31,7 +31,7 @@ import './images/stopwatch.svg'
 import './images/trophy.svg'
 
 
-//Generate random user 
+//Generate random user
 const uniqueUserIndex = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
 
 //Repo variables
@@ -66,7 +66,7 @@ function dropYear(dates) {
 }
 $(document).ready(function () {
 
-  //Packery Items 
+  //Packery Items
   // let $grid = $('.grid').packery({
   //   itemSelector: '.grid-item',
   //   columnWidth: 30,
@@ -263,9 +263,9 @@ $(document).ready(function () {
   $('.average-stairs').text(`${activityRepo.returnAverage(date, 'flightsOfStairs')}`)
   $('.distance-in-miles').text(`${activity.returnMilesWalked()} Miles`);
   $('.most-active').text(`${activityRepo.returnMostActive()[0]}: ${activityRepo.returnMostActive()[1]} minutes`);
-  $('.week-review-minutes').text(`${activity.returnAverageMinutesActiveForWeek(1)} minutes active`);
-  $('.week-review-steps').text(`${activity.returnAverageStepsForWeek(1)} steps taken`);
-  $('.week-review-stairs').text(`${activity.returnAverageStairsForWeek(1)} flights of stairs`);
+  $('.week-review-minutes').text(`${activity.returnAverageActivityForWeek(1, 'minutesActive')} minutes active`);
+  $('.week-review-steps').text(`${activity.returnAverageActivityForWeek(1, 'numSteps')} steps taken`);
+  $('.week-review-stairs').text(`${activity.returnAverageActivityForWeek(1, 'flightsOfStairs')} flights of stairs`);
 
   // Friends
 
