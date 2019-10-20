@@ -12,11 +12,6 @@ class Activity {
     return [...userData].splice((-7 * week), 7);
   }
 
-  returnWeek(week) {
-    var specificUser = this.findUser()
-    return [...specificUser].splice(-7 * week, 7).map(day => day.date);
-  }
-
   returnNumStepsDay(date) {
     let specificUser = this.findUser();
     return specificUser.find(day => day.date === date).numSteps;
@@ -105,7 +100,6 @@ class Activity {
 
     return dates;
   }
-
 
 }
 
