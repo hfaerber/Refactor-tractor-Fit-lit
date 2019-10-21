@@ -66,7 +66,7 @@ describe('Sleep', () => {
     expect(fullSleep.returnWeekOfSleepInfo(2, 'hoursSlept')).to.eql([7.3, 5.1, 8.6, 10.5, 9.1, 6.5, 6.8]);
   });
 
-  it('should return hours slept each day for week for a specific user', () => {
+  it('should return quality of sleep for the week for a specific user', () => {
     expect(fullSleep.returnWeekOfSleepInfo(2, 'sleepQuality')).to.eql([4.8, 4.7, 3.7, 1.8, 1.5, 4.2, 2]);
   });
 
