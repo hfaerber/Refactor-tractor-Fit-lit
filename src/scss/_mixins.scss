@@ -1,0 +1,41 @@
+@mixin font-weight($weight) {
+  font-weight: $weight;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+}
+
+@mixin margin($top, $right, $bottom, $left) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+@mixin padding($top, $right, $bottom, $left) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+
+@mixin size-xs {
+  @media (max-width: 599px) { @content; }
+}
+
+@mixin size-sm {
+  @media (min-width: 600px) { @content; }
+}
+
+@mixin size-md {
+  @media (min-width: 900px) { @content; }
+}
+
+@mixin size-lg {
+  @media (min-width: 1200px) { @content; }
+}
+
+@mixin size-xl {
+  @media (min-width: 1800px) { @content; }
+}
