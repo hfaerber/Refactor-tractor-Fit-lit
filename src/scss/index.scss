@@ -1,22 +1,6 @@
 @import 'variables';
 @import 'mixins';
 
-// $header-font-color: #5C75DA;
-// $body-background-color: #EAEBEF;
-// $data-card-background-color: #FEFEFE;
-//
-// $margin-none: 0;
-// $margin-5px: 5px;
-//
-
-// $box-shadow:
-
-//
-// variables for colors, fonts, etc.
-// nesting, when/where appropriate
-// color functions for ensuring a cohesive color scheme
-// at least one mixin, function or extends
-
 *,
 *:before,
 *:after {
@@ -26,9 +10,9 @@
 body {
   background-color: $body-background-color;
   font-family: 'Open Sans', sans-serif;
-  margin: $margin-none;
+  @include margin(0px, 0px, 0px, 0px);
   min-width: 320px;
-  padding: 10px;
+  @include padding(10px, 10px, 10px, 10px);
 }
 
 h2 {
@@ -48,7 +32,7 @@ canvas {
 }
 
 .welcome-section {
-  margin-bottom: 10px;
+  @include margin(0px, 0px, 10px, 0px);
 }
 
 .date {
@@ -56,8 +40,8 @@ canvas {
   border-radius: 3px;
   float: right;
   @include font-size(10px);
-  margin: $margin-5px;
-  padding: 3px 5px;
+  @include margin(5px, 5px, 5px, 5px);
+  @include padding(3px, 5px, 3px, 5px);
   width: 175px;
   color: $body-background-color;
   @include font-weight(600);
@@ -67,14 +51,14 @@ canvas {
   align-items: center;
   display: inline-block;
   @include font-size(20px);
-  margin: $margin-none;
+  @include margin(0px, 0px, 0px, 0px);
   width: 83%;
 }
 
 .welcome-message {
   border-radius: 3px;
-  margin: 15px 3px 10px 3px;
-  padding: 3px 15px;
+  @include margin(15px, 3px, 10px, 3px);
+  @include padding(3px, 15px, 3px, 15px);
   text-align: left;
 }
 
@@ -87,7 +71,7 @@ canvas {
   "column1 column2 column3";
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  margin-left: 15px;
+  @include margin(0px, 0px, 0px, 15px);
 }
 
 .grid-column1 {
@@ -105,8 +89,8 @@ canvas {
 .data-section {
   background-color: $data-card-background-color;
   border-radius: 3px;
-  margin: $margin-5px;
-  padding: 15px;
+  @include margin(5px, 5px, 5px, 5px);
+    @include padding(15px, 15px, 15px, 15px);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
   width: 93%;
@@ -116,7 +100,7 @@ canvas {
 }
 
 .data-heading {
-  margin: 0px 0px 15px 0px;
+  @include margin(0px, 0px, 15px, 0px);
   @include font-size(1.5em);
   @include font-weight(200);
   color: $header-font-color;
@@ -126,36 +110,35 @@ canvas {
 .data-article {
   @include font-weight(300);
   // @include font-weight(.8em);
-  margin: 40px 0px;
+  @include margin(40px, 0px, 40px, 0px);
   text-align: center;
 }
 
 .data-text {
-  margin: 15px;
+  @include margin(15px, 15px, 15px, 15px);
 }
 
 .subtext {
   @include font-size(10px);
   @include font-weight(700);
-  margin: $margin-5px;
+  @include margin(5px, 5px, 5px, 5px);
   color: $header-font-color;
 }
 
 .water-consumed {
-  margin: $margin-5px;
+  @include margin(5px, 5px, 5px, 5px);
 }
 
 .number-of-steps-day {
-  margin: 20px;
+  @include margin(20px, 20px, 20px, 20px);
   width: 100px;
   height: 100px;
-  margin: auto;
   position: relative;
   text-align: center;
 }
 
 .number-of-steps-goal {
-  margin-top: 10px;
+  @include margin(10px, 10px, 10px, 10px);
 }
 
 ul {
@@ -182,7 +165,7 @@ img {
 .border {
   border-right: 2px solid $header-font-color;
   height: 100px;
-  margin-top: 15px;
+  @include margin(15px, 0px, 0px, 0px);
 }
 
 .average {
