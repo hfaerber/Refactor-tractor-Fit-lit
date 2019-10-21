@@ -38,4 +38,8 @@ describe('SleepRepo', () => {
     expect(sleepRepo.returnWeeklyLongestSleepers(1)).to.eql([57.3, 2])
   });
 
+  it('should return sleep data organized by user ID', () => {
+    expect(sleepRepo.organizeByUser().length).to.equal(5)
+  });
+
 });
