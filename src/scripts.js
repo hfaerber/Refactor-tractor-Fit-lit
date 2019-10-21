@@ -134,7 +134,7 @@ $(document).ready(function () {
   });
 
   //Sleep
-  $('.hours-slept-day').text(`${sleep.returnSleepHours(date)} hours | ${sleep.returnSleepQuality(date)} quality`);
+  $('.hours-slept-day').text(`${sleep.returnDaysSleepInfo(date, 'hoursSlept')} hours | ${sleep.returnDaysSleepInfo(date, 'sleepQuality')} quality`);
 
   const weeklySleepChart = new Chart(document.getElementById('sleep-week').getContext('2d'), {
     type: 'line',
@@ -255,9 +255,9 @@ $(document).ready(function () {
 
   $('.number-of-steps-goal').text(`Step Goal: ${user.dailyStepGoal}`);
   $('.avg-number-of-steps-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
-  $('.number-of-minutes-active-day').text(`${activity.returnMinutesActive(date)}`);
+  $('.number-of-minutes-active-day').text(`${activity.returnDaysActivityInfo(date, 'minutesActive')}`);
   $('.average-minutes-active').text(`${activityRepo.returnAverage(date, 'minutesActive')}`)
-  $('.distance').text(`${activity.returnNumStepsDay(date)}`);
+  $('.distance').text(`${activity.returnDaysA(date, 'numSteps')}`);
   $('.average-distance').text(`${activityRepo.returnAverage(date, 'numSteps')}`)
   $('.stairs').text(`${activity.returnFlightsOfStairs(date)}`);
   $('.average-stairs').text(`${activityRepo.returnAverage(date, 'flightsOfStairs')}`)

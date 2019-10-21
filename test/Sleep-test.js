@@ -55,11 +55,11 @@ describe('Sleep', () => {
   });
 
   it('should return how many hours slept for a specific day', () => {
-    expect(sleep.returnSleepInfo('2019/06/15', 'hoursSlept')).to.equal(6.1);
+    expect(sleep.returnDaysSleepInfo('2019/06/15', 'hoursSlept')).to.equal(6.1);
   });
 
   it('should return sleep quality for a specific day', () => {
-    expect(sleep.returnSleepInfo('2019/06/15', 'sleepQuality')).to.equal(2.2);
+    expect(sleep.returnDaysSleepInfo('2019/06/15', 'sleepQuality')).to.equal(2.2);
   });
 
   it('should return hours slept each day for week for a specific user', () => {

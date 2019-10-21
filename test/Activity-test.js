@@ -8,7 +8,7 @@ import Activity from '../src/Activity';
 import User from '../src/User';
 
 
-describe.only('Activity', () => {
+describe('Activity', () => {
   let user;
   let activity;
 

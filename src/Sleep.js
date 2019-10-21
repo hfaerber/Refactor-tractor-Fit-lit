@@ -25,7 +25,7 @@ class Sleep {
     }, 0) / specificUser.length).toFixed(2));
   }
 
-  returnSleepInfo(date, metric) {
+  returnDaysSleepInfo(date, metric) {
     let specificUser = this.findUser();
     return specificUser.find(day => day.date === date)[metric];
   }
