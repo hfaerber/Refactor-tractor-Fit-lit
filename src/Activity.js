@@ -12,11 +12,6 @@ class Activity {
     return [...userData].splice((-7 * week), 7);
   }
 
-  returnWeek(week) {
-    var specificUser = this.findUser()
-    return [...specificUser].splice(-7 * week, 7).map(day => day.date);
-  }
-
   returnNumStepsDay(date) {
     let specificUser = this.findUser();
     return specificUser.find(day => day.date === date).numSteps;
@@ -41,15 +36,6 @@ class Activity {
     }, 0) / 7)
   }
 
-  returnAverageStairsForWeek(week) {
-    let specificUser = this.findUser();
-    let weekOfData = this.returnWeekOfData(week, specificUser);
-    return Math.floor(weekOfData.reduce((totalStairs, eachDay) => {
-      totalStairs += eachDay.flightsOfStairs
-      return totalStairs
-    }, 0) / 7)
-  }
-
   metStepGoal(date) {
     let specificUser = this.findUser();
     let numSteps = specificUser.find(day => day.date === date).numSteps
@@ -62,7 +48,7 @@ class Activity {
     return specificUser.filter(day => day.numSteps >= stepGoal).map(day => day.date);
   }
 
-  returnStepRecord() {
+  returnStairRecord() {
     let specificUser = this.findUser();
     return [...specificUser].sort((a, b) => b.flightsOfStairs - a.flightsOfStairs)[0].flightsOfStairs
   }
@@ -92,7 +78,6 @@ class Activity {
       }
       return dates.length === 3;
     });
-
     return dates;
   }
 
@@ -106,10 +91,8 @@ class Activity {
       }
       return dates.length === 2;
     });
-
     return dates;
   }
-
 
 }
 
