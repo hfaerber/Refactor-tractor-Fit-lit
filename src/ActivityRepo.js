@@ -13,10 +13,10 @@ class ActivityRepo {
     }, 0) / amountPerDay.length).toFixed(0));
   }
 
-  returnMostActive() {
-    let person = [...this.activityData].sort((a, b) => b.minutesActive - a.minutesActive)[0].userID;
-    let minActive = [...this.activityData].sort((a, b) => b.minutesActive - a.minutesActive)[0].minutesActive;
-    return [this.userData.find(user => user.id === person).name, minActive];
+  returnMostActive(metric) {
+    let person = [...this.activityData].sort((a, b) => b[metric] - a[metric])[0].userID;
+    let activity = [...this.activityData].sort((a, b) => b[metric] - a[metric])[0][metric];
+    return [this.userData.find(user => user.id === person).name, activity];
   }
 }
 
