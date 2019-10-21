@@ -15,8 +15,9 @@ import userData from "../data/users";
 import hydrationData from "../data/hydration";
 
 // An example of how you tell webpack to use a CSS (SCSS) file
-import './css/normalize.css';
+import './scss/_normalize.scss';
 import './css/styles.css';
+import './scss/styles.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/appointment.svg'
@@ -31,7 +32,7 @@ import './images/stopwatch.svg'
 import './images/trophy.svg'
 
 
-//Generate random user 
+//Generate random user
 const uniqueUserIndex = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
 
 //Repo variables
@@ -66,7 +67,7 @@ function dropYear(dates) {
 }
 $(document).ready(function () {
 
-  //Packery Items 
+  //Packery Items
   // let $grid = $('.grid').packery({
   //   itemSelector: '.grid-item',
   //   columnWidth: 30,
