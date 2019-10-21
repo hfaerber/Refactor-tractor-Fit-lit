@@ -141,11 +141,11 @@ describe('Activity', () => {
   });
 
   it('should return number of flights of stairs climbed by a specific user for a specific day', () => {
-    expect(activity.returnFlightsOfStairs("2019/06/17")).to.equal(18);
+    expect(activity.returnDaysActivityInfo("2019/06/17", 'flightsOfStairs')).to.equal(18);
   });
 
   it('should return the minutes active for a day', () => {
-    expect(activity.returnMinutesActive("2019/06/26")).to.equal(219);
+    expect(activity.returnDaysActivityInfo("2019/06/26", 'minutesActive')).to.equal(219);
   });
 
   it('should return the average minutes active for a week', () => {

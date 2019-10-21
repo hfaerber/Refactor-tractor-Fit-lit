@@ -17,40 +17,22 @@ class Sleep {
     return [...specificUser].splice(-7 * week, 7).map(day => day.date);
   }
 
-  returnAvgSleepHours() {
+  returnAvgSleepInfo(metric) {
     let specificUser = this.findUser();
-    return Number((specificUser.reduce((totalHours, day) => {
-      totalHours += day.hoursSlept;
-      return totalHours;
+    return Number((specificUser.reduce((totalMetric, day) => {
+      totalMetric += day[metric];
+      return totalMetric;
     }, 0) / specificUser.length).toFixed(2));
   }
 
-  returnAvgSleepQuality() {
+  returnDaysSleepInfo(date, metric) {
     let specificUser = this.findUser();
-    return Number((specificUser.reduce((totalQuality, day) => {
-      totalQuality += day.sleepQuality;
-      return totalQuality;
-    }, 0) / specificUser.length).toFixed(2));
+    return specificUser.find(day => day.date === date)[metric];
   }
 
-  returnSleepHours(date) {
+  returnWeekOfSleepInfo(week, metric) {
     let specificUser = this.findUser();
-    return specificUser.find(day => day.date === date).hoursSlept;
-  }
-
-  returnSleepQuality(date) {
-    let specificUser = this.findUser();
-    return specificUser.find(day => day.date === date).sleepQuality;
-  }
-
-  returnWeekOfSleepHours(week) {
-    let specificUser = this.findUser();
-    return this.returnWeekOfData(week, specificUser).map(day => day.hoursSlept);
-  }
-
-  returnWeekOfSleepQuality(week) {
-    let specificUser = this.findUser();
-    return this.returnWeekOfData(week, specificUser).map(day => day.sleepQuality);
+    return this.returnWeekOfData(week, specificUser).map(day => day[metric]);
   }
 }
 

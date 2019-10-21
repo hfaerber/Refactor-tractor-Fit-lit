@@ -22,14 +22,9 @@ class Activity {
     return Number((this.user.strideLength * specificUser[specificUser.length - 1].numSteps / 5280).toFixed(2))
   }
 
-  returnMinutesActive(date) {
+  returnDaysActivityInfo(date, metric) {
     let specificUser = this.findUser();
-    return specificUser.find(day => day.date === date).minutesActive;
-  }
-
-  returnFlightsOfStairs(date) {
-    let specificUser = this.findUser();
-    return specificUser.find(day => day.date === date).flightsOfStairs;
+    return specificUser.find(day => day.date === date)[metric];
   }
 
   returnAverageActivityForWeek(week, metric) {
@@ -83,7 +78,6 @@ class Activity {
       }
       return dates.length === 3;
     });
-
     return dates;
   }
 
@@ -97,7 +91,6 @@ class Activity {
       }
       return dates.length === 2;
     });
-
     return dates;
   }
 
