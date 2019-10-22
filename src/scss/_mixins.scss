@@ -1,9 +1,6 @@
-@mixin font-weight($weight) {
-  font-weight: $weight;
-}
-
-@mixin font-size($size) {
+@mixin font-look($size, $weight) {
   font-size: $size;
+  font-weight: $weight;
 }
 
 @mixin margin($top, $right, $bottom, $left) {

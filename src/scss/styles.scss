@@ -15,15 +15,14 @@ body {
   @include padding(10px, 10px, 10px, 10px);
 }
 
-h2 {
-  @include font-size(2em);
-  @include font-weight(300);
+h1 {
+  @include font-look(6em, 300);
   color: $header-font-color;
   letter-spacing: .9px
 }
 
 .username {
-  @include font-weight(600);
+  @include font-look(1em, 600);
 }
 
 canvas {
@@ -33,32 +32,23 @@ canvas {
 
 .welcome-section {
   @include margin(0px, 0px, 10px, 0px);
+  padding-right: 85px;
 }
 
 .date {
   background-color: $header-font-color;
   border-radius: 3px;
   float: right;
-  @include font-size(10px);
   @include margin(5px, 5px, 5px, 5px);
   @include padding(3px, 5px, 3px, 5px);
-  width: 175px;
   color: $body-background-color;
-  @include font-weight(600);
-}
-
-.logo {
-  align-items: center;
-  display: inline-block;
-  @include font-size(20px);
-  @include margin(0px, 0px, 0px, 0px);
-  width: 83%;
+  @include font-look(3em, 600);
 }
 
 .welcome-message {
   border-radius: 3px;
   @include margin(15px, 3px, 10px, 3px);
-  @include padding(3px, 15px, 3px, 15px);
+  @include padding(3px, 15px, 3px, 45px);
   text-align: left;
 }
 
@@ -100,49 +90,52 @@ canvas {
 }
 
 .data-heading {
-  @include margin(0px, 0px, 15px, 0px);
-  @include font-size(1.5em);
-  @include font-weight(200);
+  @include margin(5px, 0px, 15px, 10px);
+  @include font-look(6em, 200);
   color: $header-font-color;
   letter-spacing: 1px;
 }
 
 .data-article {
-  @include font-weight(300);
-  // @include font-weight(.8em);
   @include margin(40px, 0px, 40px, 0px);
   text-align: center;
 }
 
 .data-text {
   @include margin(15px, 15px, 15px, 15px);
+  @include font-look(3.5em, 300);
 }
 
 .subtext {
-  @include font-size(10px);
-  @include font-weight(700);
-  @include margin(5px, 5px, 5px, 5px);
+  @include font-look(3em, 700);
+  @include margin(25px, 5px, 25px, 5px);
   color: $header-font-color;
 }
 
-.water-consumed {
-  @include margin(5px, 5px, 5px, 5px);
-}
-
 .number-of-steps-day {
-  @include margin(20px, 20px, 20px, 20px);
-  width: 100px;
-  height: 100px;
-  position: relative;
-  text-align: center;
+  @include margin(20px, auto, 50px, auto);
+  width: 280px;
+  @include font-look(1.2em, 200);
 }
 
 .number-of-steps-goal {
   @include margin(10px, 10px, 10px, 10px);
 }
 
+.streak-heading {
+  @include font-look(3.5em, 700);
+}
+
+.user-average {
+  @include font-look(3em, 700);
+}
+
 ul {
   list-style: none;
+}
+
+.date_li {
+  @include font-look(.3em, 200);
 }
 
 img {
@@ -151,7 +144,7 @@ img {
 
 .img-medium {
   opacity: 0.6;
-  width: 80px;
+  width: 180px;
 }
 
 .separator {
@@ -172,12 +165,6 @@ img {
   width: 50%;
 }
 
-h4 {
-  @include font-weight(600);
-  @include font-size(1em);
-}
-
 p {
-  @include font-weight(200);
-  @include font-size(1em);
+  @include font-look(3.5em, 200);
 }
