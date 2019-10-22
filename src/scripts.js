@@ -278,6 +278,9 @@ $(document).ready(function () {
              <p class="friends--steps"><b>${userName}</b>:</p>
              <p>${activity.returnFriendsStepCount()[0][userID]} steps</p>`;
     });
+    list += `<li class="friends_li">
+            <p class="friends--steps"><b>Highest step count:</b>:
+            ${findUserName(Number(activity.returnFriendsStepCount()[1]))}</p>`;
     list += `</ul>`;
     return list;
   }
