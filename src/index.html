@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Activity Tracker</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.7.0/dist/progressbar.js"></script>
-
 </head>
-
 <body>
   <section class="welcome-section">
-    <h1 class="logo"><img src="./images/logo.png" alt="FitLit logo"></h1>
-    <h2 class="date"></h2>
-    <h2 class="welcome-message">Welcome <span class="username"></span></h2>
+    <img src="./images/logo.png" alt="FitLit logo">
+    <h1 class="date"></h1>
+    <h1 class="welcome-message">Welcome <span class="username"></span></h1>
   </section>
   <div class="grid">
     <div class="grid-column1">
       <section class="data-section hydration grid-item draggable" tabindex="1">
-        <h4 class="data-heading">Hydration</h4>
+        <h2 class="data-heading">Hydration</h2>
         <article class="data-article water-consumed-article">
           <img class="img-medium" src="../images/drop.svg" alt="water droplet">
           <p class="subtext">TODAY</p>
-          <p class="water-consumed"></p>
+          <p class="data-text water-consumed"></p>
         </article>
         <article class="data-article water-consumed-week">
           <canvas id="water-consumed-week"
@@ -31,24 +28,24 @@
         </article>
       </section>
       <section class="data-section challenges grid-item draggable" tabindex="5">
-        <h4 class="data-heading">Challenges</h4>
+        <h2 class="data-heading">Challenges</h2>
         <article class="increasing-steps-article">
-          <h4>3 Day Step Streak</h4>
+          <h2>3 Day Step Streak</h2>
           <p class="increasing-steps"></p>
         </article>
         <article class="increasing-stairs-article">
-          <h4>2 Day Stair Streak</h4>
+          <h2>2 Day Stair Streak</h2>
           <p class="increasing-stairs"></p>
         </article>
       </section>
       <section class="data-section friends grid-item draggable" tabindex="4">
-        <h4 class="data-heading">Friends</h4>
+        <h2 class="data-heading">Friends</h2>
         <article class="friends-step"></article>
       </section>
     </div>
     <div class="grid-column2">
       <section class="data-section sleep grid-item draggable" tabindex="2">
-        <h4 class="data-heading">Sleep</h4>
+        <h2 class="data-heading">Sleep</h2>
         <article class="data-article hours-slept-day-article">
           <img class="img-medium" src="../images/moon.svg" alt="moon with stars">
           <p class="subtext">LAST NIGHT</p>
@@ -68,7 +65,7 @@
     </div>
     <div class="grid-column3">
       <section class="data-section activity grid-item draggable" tabindex="3">
-        <h4 class="data-heading">Activity</h4>
+        <h2 class="data-heading">Activity</h2>
         <article class="data-article user-step-goal"></article>
         <article class="data-article average-step-goal"></article>
         <article class="data-article number-of-steps-day-article">
@@ -79,14 +76,14 @@
           <p class="subtext">TODAY</p>
           <div class="separator">
             <div class="user">
-              <h5>User</h5>
-              <h4 class="data-text number-of-minutes-active-day"></h4>
+              <h3>User</h3>
+              <h2 class="data-text number-of-minutes-active-day"></h2>
               <p>Minutes Active</p>
             </div>
             <div class="border"></div>
             <div class="average">
-              <h5>Average</h5>
-              <h4 class="data-text average-minutes-active"></h4>
+              <h3>Average</h3>
+              <h2 class="data-text average-minutes-active"></h2>
               <p>Minutes Active</p>
             </div>
           </div>
@@ -96,15 +93,15 @@
           <p class="subtext">TODAY</p>
           <div class="separator">
             <div class="user">
-              <h5>User</h5>
-              <h4 class="data-text distance"></h4>
+              <h3>User</h3>
+              <h2 class="data-text distance"></h2>
               <p>Steps Taken</p>
               <p class="subtext number-of-steps-goal"></p>
             </div>
             <div class="border"></div>
             <div class="average">
-              <h5>Average</h5>
-              <h4 class="data-text average-distance"></h4>
+              <h3>Average</h3>
+              <h2 class="data-text average-distance"></h2>
               <p>Steps Taken</p>
               <p class="subtext avg-number-of-steps-goal"></p>
             </div>
@@ -115,14 +112,14 @@
           <p class="subtext">TODAY</p>
           <div class="separator">
             <div class="user">
-              <h5>User</h5>
-              <h4 class="data-text stairs"></h4>
+              <h3>User</h3>
+              <h2 class="data-text stairs"></h2>
               <p>Stairs Climbed</p>
             </div>
             <div class="border"></div>
             <div class="average">
-              <h5>Average</h5>
-              <h4 class="data-text average-stairs"></h4>
+              <h3>Average</h3>
+              <h2 class="data-text average-stairs"></h2>
               <p>Stairs Climbed</p>
             </div>
           </div>

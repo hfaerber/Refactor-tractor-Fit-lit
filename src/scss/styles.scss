@@ -1,4 +1,4 @@
-@import 'variables';
+ @import 'variables';
 @import 'mixins';
 
 *,
@@ -15,12 +15,26 @@ body {
   @include padding(10px, 10px, 10px, 10px);
 }
 
-h2 {
+h1 {
   @include font-size(2em);
   @include font-weight(300);
   color: $header-font-color;
   letter-spacing: .9px
 }
+
+h2 {
+  @include font-weight(600);
+  @include font-size(1em);
+  color: $header-font-color;
+
+}
+
+// h2 {
+//   @include font-size(2em);
+//   @include font-weight(300);
+//   color: $header-font-color;
+//   letter-spacing: .9px
+// }
 
 .username {
   @include font-weight(600);
@@ -39,10 +53,10 @@ canvas {
   background-color: $header-font-color;
   border-radius: 3px;
   float: right;
-  @include font-size(10px);
+  // @include font-size(10px);
   @include margin(5px, 5px, 5px, 5px);
   @include padding(3px, 5px, 3px, 5px);
-  width: 175px;
+  // width: 175px;
   color: $body-background-color;
   @include font-weight(600);
 }
@@ -108,8 +122,6 @@ canvas {
 }
 
 .data-article {
-  @include font-weight(300);
-  // @include font-weight(.8em);
   @include margin(40px, 0px, 40px, 0px);
   text-align: center;
 }
@@ -123,10 +135,6 @@ canvas {
   @include font-weight(700);
   @include margin(5px, 5px, 5px, 5px);
   color: $header-font-color;
-}
-
-.water-consumed {
-  @include margin(5px, 5px, 5px, 5px);
 }
 
 .number-of-steps-day {
@@ -170,11 +178,6 @@ img {
 
 .average {
   width: 50%;
-}
-
-h4 {
-  @include font-weight(600);
-  @include font-size(1em);
 }
 
 p {
