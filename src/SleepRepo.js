@@ -19,33 +19,42 @@ class SleepRepo {
       }
       return arr;
     }, []);
-    return dataByUser
   }
 
-  returnAboveAverageSleepers(week) {
+  returnUsersWeeklyTotals(week, metric) {
     let dataByUser = this.organizeByUser();
-    let avgSleepQualityPerUser = dataByUser.map(user => [...user].splice(-7 * week, 7)).map(user => user.reduce((totalQuality, day) => {
-      totalQuality += day.sleepQuality;
-      return totalQuality;
-    }, 0)).map(user => Number((user / 7).toFixed(2)));
+    let usersWeeklyTotals = dataByUser.map(user => [...user].splice(-7 * week, 7)).map(user => user.reduce((total, day) => {
+      total += day[metric];
+      return total;
+    }, 0))
+    return usersWeeklyTotals
+  }
 
+// pull in both top functions
+  returnWeeksBestSleepQuality(week, metric) {
+    let weekTotals = this.returnUsersWeeklyTotals(week, metric);
+    let weekAverages = weekTotals.map(user => Number((user / 7).toFixed(2)));
     let goodSleepers = [];
-    avgSleepQualityPerUser.forEach((user, index) => {
+    weekAverages.forEach((user, index) => {
       if (user >= 3) {
         goodSleepers.push(index + 1);
       }
     });
-    return goodSleepers;
+    return goodSleepers
   }
 
-  returnWeeklyLongestSleepers(week) {
-    let dataByUser = this.organizeByUser();
-    let avgSleepHoursPerUser = dataByUser.map(user => [...user].splice(-7 * week, 7)).map(user => user.reduce((totalHours, day) => {
-      totalHours += day.hoursSlept;
-      return totalHours;
-    }, 0));
-    return [Math.max(...avgSleepHoursPerUser), avgSleepHoursPerUser.indexOf(Math.max(...avgSleepHoursPerUser)) + 1];
-  }
+
+
+//pull in both top functions
+  // returnWeeklyLongestSleepers(week) {
+  //   let dataByUser = this.organizeByUser();
+  //   let avgSleepHoursPerUser = dataByUser.map(user => [...user].splice(-7 * week, 7)).map(user => user.reduce((totalHours, day) => {
+  //     totalHours += day.hoursSlept;
+  //     return totalHours;
+  //   }, 0));
+  //   console.log(avgSleepHoursPerUser)
+  //   // return [Math.max(...avgSleepHoursPerUser), avgSleepHoursPerUser.indexOf(Math.max(...avgSleepHoursPerUser)) + 1];
+  // }
 
 
   returnLongestSleepers(date) {
