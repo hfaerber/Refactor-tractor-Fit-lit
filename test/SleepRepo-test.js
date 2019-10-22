@@ -7,7 +7,7 @@ import allSleepData from '../data/sleep';
 import SleepRepo from '../src/SleepRepo';
 
 
-describe.only('SleepRepo', () => {
+describe('SleepRepo', () => {
 
   let sleepRepo, fullSleepRepo;
   beforeEach(() => {
@@ -47,11 +47,8 @@ describe.only('SleepRepo', () => {
     expect(sleepRepo.organizeByUser().length).to.equal(5)
   });
 
-
   it('should return any users with an average sleep quality over 3', () => {
     expect(sleepRepo.returnWeeksBestSleepQuality(1, 'sleepQuality')).to.eql([3])
   })
-
-
 });
 
