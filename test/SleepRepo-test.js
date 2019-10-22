@@ -39,9 +39,9 @@ describe.only('SleepRepo', () => {
     expect(sleepRepo.returnLongestSleepers("2019/06/25")).to.eql([2]);
   });
 
-  // it('should return the users who got the most sleep over the last week', () => {
-  //   expect(sleepRepo.returnWeeklyLongestSleepers(1)).to.eql([57.3, 2])
-  // });
+  it('should return the users who got the most sleep over the last week', () => {
+    expect(sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')).to.eql([57.3, 2])
+  });
 
   it('should return sleep data organized by user ID', () => {
     expect(sleepRepo.organizeByUser().length).to.equal(5)

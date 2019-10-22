@@ -19,6 +19,7 @@ class SleepRepo {
       }
       return arr;
     }, []);
+    return dataByUser
   }
 
   returnUsersWeeklyTotals(week, metric) {
@@ -30,7 +31,6 @@ class SleepRepo {
     return usersWeeklyTotals
   }
 
-// pull in both top functions
   returnWeeksBestSleepQuality(week, metric) {
     let weekTotals = this.returnUsersWeeklyTotals(week, metric);
     let weekAverages = weekTotals.map(user => Number((user / 7).toFixed(2)));
@@ -43,18 +43,10 @@ class SleepRepo {
     return goodSleepers
   }
 
-
-
-//pull in both top functions
-  // returnWeeklyLongestSleepers(week) {
-  //   let dataByUser = this.organizeByUser();
-  //   let avgSleepHoursPerUser = dataByUser.map(user => [...user].splice(-7 * week, 7)).map(user => user.reduce((totalHours, day) => {
-  //     totalHours += day.hoursSlept;
-  //     return totalHours;
-  //   }, 0));
-  //   console.log(avgSleepHoursPerUser)
-  //   // return [Math.max(...avgSleepHoursPerUser), avgSleepHoursPerUser.indexOf(Math.max(...avgSleepHoursPerUser)) + 1];
-  // }
+  returnWeeklyLongestSleepers(week, metric) {
+    let avgSleepHoursPerUser = this.returnUsersWeeklyTotals(week, metric)
+    return [Math.max(...avgSleepHoursPerUser), avgSleepHoursPerUser.indexOf(Math.max(...avgSleepHoursPerUser)) + 1];
+  }
 
 
   returnLongestSleepers(date) {
