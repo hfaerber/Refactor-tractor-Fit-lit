@@ -209,7 +209,7 @@ $(document).ready(function () {
     }
   });
 
-  $('.longest-sleepers').text(`${findUserName(sleepRepo.returnWeeklyLongestSleepers(1)[1])}: ${sleepRepo.returnWeeklyLongestSleepers(1)[0]} hours`);
+  $('.longest-sleepers').text(`${findUserName(sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[1])}: ${sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[0]} hours`);
 
   //Activity Section
 
