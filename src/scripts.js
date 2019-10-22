@@ -272,12 +272,18 @@ $(document).ready(function () {
 
   function insertFriendSteps() {
     let list = `<ul class="friends_ul">`
+    let highestStepCountUserId = Number(activity.returnFriendsStepCount()[1]);
+    let highestStepCountUserName = findUserName(highestStepCountUserId);
     userIDs.forEach(userID => {
       let userName = findUserName(Number(userID));
       list += `<li class="friends_li">
              <p class="friends--steps"><b>${userName}</b>:</p>
              <p>${activity.returnFriendsStepCount()[0][userID]} steps</p>`;
     });
+
+    list += `<li class="friends_li">
+            <p class="friends--steps"><b>Highest step count:</b>
+            ${highestStepCountUserName}</p>`;
     list += `</ul>`;
     return list;
   }
