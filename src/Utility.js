@@ -5,7 +5,7 @@ class Utility {
     this.singleUserData = this.dataSet.filter(stat => stat.userID === this.userID);
   }
 
-  returnWeekDatesOnly() {
+  returnWeekDatesOnly(week) {
     return [...this.singleUserData].splice(-7 * week, 7).map(day => day.date);
   }
 
@@ -25,9 +25,9 @@ class Utility {
   }
 
   returnAvgUserStatForWeek(week, metric) {
-    let weekOfData = this.returnWeekDatesOnly(week, this.singleUserData);
+    let weekOfData = this.returnWeekOfStatsForUser(week, this.singleUserData);
     return Math.floor(weekOfData.reduce((totalMetric, eachDay) => {
-      totalMetric += eachDay[metric]
+      totalMetric += eachDay[metric]; 
       return totalMetric
     }, 0) / 7)
   }
