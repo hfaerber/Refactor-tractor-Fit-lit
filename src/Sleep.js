@@ -1,11 +1,6 @@
-class Sleep {
-  constructor(sleepData, userID) {
-    this.sleepData = sleepData;
-    this.userID = userID;
-  }
-
-  findUser() {
-    return this.sleepData.filter(user => user.userID === this.userID);
+class Sleep extends Utility {
+  constructor(dataSet, userID) {
+    super (dataSet, userID);
   }
 
   returnWeekOfData(week, userData) {
@@ -13,26 +8,22 @@ class Sleep {
   }
 
   returnWeek(week) {
-    var specificUser = this.findUser()
-    return [...specificUser].splice(-7 * week, 7).map(day => day.date);
+    return [...this.singleUserData].splice(-7 * week, 7).map(day => day.date);
   }
 
   returnAvgSleepInfo(metric) {
-    let specificUser = this.findUser();
-    return Number((specificUser.reduce((totalMetric, day) => {
+    return Number((this.singleUserData.reduce((totalMetric, day) => {
       totalMetric += day[metric];
       return totalMetric;
-    }, 0) / specificUser.length).toFixed(2));
+    }, 0) / this.singleUserData.length).toFixed(2));
   }
 
   returnDaysSleepInfo(date, metric) {
-    let specificUser = this.findUser();
-    return specificUser.find(day => day.date === date)[metric];
+    return this.singleUserData.find(day => day.date === date)[metric];
   }
 
   returnWeekOfSleepInfo(week, metric) {
-    let specificUser = this.findUser();
-    return this.returnWeekOfData(week, specificUser).map(day => day[metric]);
+    return this.returnWeekOfData(week, this.singleUserData).map(day => day[metric]);
   }
 }
 

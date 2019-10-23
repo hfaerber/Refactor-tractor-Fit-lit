@@ -1,34 +1,25 @@
-class Hydration {
-  constructor(hydrationData, userID) {
-    this.hydrationData = hydrationData;
-    this.userID = userID;
-  }
-
-  findUser() {
-    return this.hydrationData.filter(user => user.userID === this.userID);
+class Hydration extends Utility {
+  constructor(dataSet, userID) {
+    super (dataSet, userID);
   }
 
   returnWeek() {
-    var specificUser = this.findUser()
-    return [...specificUser].splice(-7).map(day => day.date);
+    return [...this.singleUserData].splice(-7).map(day => day.date);
   }
 
   returnAverageFluidOunces() {
-    var specificUser = this.findUser()
-    return Math.floor(specificUser.reduce((totalOunces, dailyOunces) => {
+    return Math.floor(this.singleUserData.reduce((totalOunces, dailyOunces) => {
       totalOunces += dailyOunces.numOunces;
       return totalOunces;
-    }, 0) / specificUser.length);
+    }, 0) / this.singleUserData.length);
   }
 
   returnDailyFluidOunces(date) {
-    var specificUser = this.findUser()
-    return specificUser.find(ounces => ounces.date === date).numOunces
+    return this.singleUserData.find(ounces => ounces.date === date).numOunces
   }
 
   returnWeeklyNumOunces() {
-    var specificUser = this.findUser()
-    return specificUser.slice(-7).map(day => day.numOunces);
+    return this.singleUserData.slice(-7).map(day => day.numOunces);
   }
 
 }
