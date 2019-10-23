@@ -3,28 +3,8 @@ class Activity extends Utility {
     super (dataSet, userID);
   }
 
-  returnWeekOfData(week, userData) {
-    return [...userData].splice((-7 * week), 7);
-  }
-
-  returnNumStepsDay(date) {
-    return this.singleUserData.find(day => day.date === date).numSteps;
-  }
-
   returnMilesWalked() {
     return Number((this.user.strideLength * this.singleUserData[this.singleUserData.length - 1].numSteps / 5280).toFixed(2))
-  }
-
-  returnDaysActivityInfo(date, metric) {
-    return this.singleUserData.find(day => day.date === date)[metric];
-  }
-
-  returnAverageActivityForWeek(week, metric) {
-    let weekOfData = this.returnWeekOfData(week, this.singleUserData);
-    return Math.floor(weekOfData.reduce((totalActivity, eachDay) => {
-      totalActivity += eachDay[metric]
-      return totalActivity
-    }, 0) / 7)
   }
 
   metStepGoal(date) {
