@@ -5,7 +5,7 @@ class Utility {
     this.singleUserData = this.dataSet.filter(stat => stat.userID === this.userID);
   }
 
-  returnWeekDatesOnly() {
+  returnWeekDatesOnly(week) {
     return [...this.singleUserData].splice(-7 * week, 7).map(day => day.date);
   }
 

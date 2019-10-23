@@ -1,7 +1,7 @@
 
 import $ from 'jquery';
 
-import Utlity from "./Utility";
+import Utility from "./Utility";
 import UserRepo from "./UserRepo";
 import User from "./User";
 import Hydration from "./Hydration";
