@@ -20,7 +20,7 @@ describe('Utility', () => {
     fullSizeUtility = new Utility(allSleepData, user.id);
   })
 
-  it('should be a function', () => {
+  it.only('should be a function', () => {
     expect(Utility).to.be.a('function');
   });
 
@@ -99,13 +99,14 @@ describe('Utility', () => {
       ]);
     });
 
-    it('should return a specific metric for a user on a specific date', () => {
+    it('should return a specific stat for a user on a particular date', () => {
       expect(utility.returnIndividualStatForDate('2019/06/15', 'hoursSlept')).to.equal(6.1);
       expect(utility.returnIndividualStatForDate('2019/06/24', 'sleepQuality')).to.equal(1.3);
     });
 
-    it.skip('should return how many hours slept for a specific day', () => {
-      expect(utility.returnDaysSleepInfo('2019/06/15', 'hoursSlept')).to.equal(6.1);
+    it('should return a user\'s all time average for a particular stat', () => {
+      expect(utility.returnAvgUserStatAllTime('hoursSlept')).to.equal(7.66);
+      expect(utility.returnAvgUserStatAllTime('sleepQuality')).to.equal(2.53);
     });
 
     it.skip('should return sleep quality for a specific day', () => {
