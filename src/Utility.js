@@ -25,9 +25,9 @@ class Utility {
   }
 
   returnAvgUserStatForWeek(week, metric) {
-    let weekOfData = this.returnWeekDatesOnly(week, this.singleUserData);
+    let weekOfData = this.returnWeekOfStatsForUser(week, this.singleUserData);
     return Math.floor(weekOfData.reduce((totalMetric, eachDay) => {
-      totalMetric += eachDay[metric]
+      totalMetric += eachDay[metric]; 
       return totalMetric
     }, 0) / 7)
   }
