@@ -6,7 +6,7 @@ class Sleep extends Utility {
   }
 
   returnWeekOfSleepInfo(week, metric) {
-    return this.returnWeekOfData(week, this.singleUserData).map(day =>
+    return this.returnWeekOfStatsForUser(week, this.singleUserData).map(day =>
       day[metric]);
   }
 }
