@@ -1,3 +1,5 @@
+import Utility from "./Utility";
+
 class Activity extends Utility {
   constructor(dataSet, userID) {
     super (dataSet, userID);
