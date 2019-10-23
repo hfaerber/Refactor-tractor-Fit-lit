@@ -1,3 +1,5 @@
+import Utility from "./Utility";
+
 class Sleep extends Utility {
   constructor(dataSet, userID) {
     super(dataSet, userID);
