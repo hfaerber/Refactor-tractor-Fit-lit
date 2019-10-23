@@ -12,12 +12,10 @@ import User from '../src/User';
 describe('Utility', () => {
   let user;
   let utility;
-  let fullSizeUtility;
 
   beforeEach(() => {
     user = new User(userData[0]);
     utility = new Utility(sleepData, user.id);
-    fullSizeUtility = new Utility(allSleepData, user.id);
   })
 
   it('should be a function', () => {
