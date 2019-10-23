@@ -99,24 +99,24 @@ describe('Utility', () => {
       ]);
     });
 
-    it.skip('should return the average sleep quality over all time for a single user', () => {
-      expect(utility.returnAvgSleepInfo('sleepQuality')).to.equal(2.53);
-    });
-
-    it.skip('should return how many hours slept for a specific day', () => {
-      expect(utility.returnDaysSleepInfo('2019/06/15', 'hoursSlept')).to.equal(6.1);
-    });
-
-    it.skip('should return sleep quality for a specific day', () => {
-      expect(utility.returnDaysSleepInfo('2019/06/15', 'sleepQuality')).to.equal(2.2);
-    });
-
-    it.skip('should return hours slept each day for week for a specific user', () => {
-      expect(fullSizeUtility.returnWeekOfSleepInfo(2, 'hoursSlept')).to.eql([7.3, 5.1, 8.6, 10.5, 9.1, 6.5, 6.8]);
-    });
-
-    it.skip('should return quality of sleep for the week for a specific user', () => {
-      expect(fullSizeUtility.returnWeekOfSleepInfo(2, 'sleepQuality')).to.eql([4.8, 4.7, 3.7, 1.8, 1.5, 4.2, 2]);
-    });
+    // it.skip('should return the average sleep quality over all time for a single user', () => {
+    //   expect(utility.returnAvgSleepInfo('sleepQuality')).to.equal(2.53);
+    // });
+    //
+    // it.skip('should return how many hours slept for a specific day', () => {
+    //   expect(utility.returnDaysSleepInfo('2019/06/15', 'hoursSlept')).to.equal(6.1);
+    // });
+    //
+    // it.skip('should return sleep quality for a specific day', () => {
+    //   expect(utility.returnDaysSleepInfo('2019/06/15', 'sleepQuality')).to.equal(2.2);
+    // });
+    //
+    // it.skip('should return hours slept each day for week for a specific user', () => {
+    //   expect(fullSizeUtility.returnWeekOfSleepInfo(2, 'hoursSlept')).to.eql([7.3, 5.1, 8.6, 10.5, 9.1, 6.5, 6.8]);
+    // });
+    //
+    // it.skip('should return quality of sleep for the week for a specific user', () => {
+    //   expect(fullSizeUtility.returnWeekOfSleepInfo(2, 'sleepQuality')).to.eql([4.8, 4.7, 3.7, 1.8, 1.5, 4.2, 2]);
+    // });
 
 });
