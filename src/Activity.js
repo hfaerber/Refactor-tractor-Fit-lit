@@ -1,19 +1,22 @@
+import Utility from "./Utility";
+
 class Activity extends Utility {
-  constructor(dataSet, userID) {
+  constructor(dataSet, userID, userData) {
     super (dataSet, userID);
+    this.userData = userData
   }
 
   returnMilesWalked() {
-    return Number((this.user.strideLength * this.singleUserData[this.singleUserData.length - 1].numSteps / 5280).toFixed(2))
+    return Number((this.userData.strideLength * this.singleUserData[this.singleUserData.length - 1].numSteps / 5280).toFixed(2))
   }
 
   metStepGoal(date) {
     let numSteps = this.singleUserData.find(day => day.date === date).numSteps
-    return numSteps >= this.user.dailyStepGoal
+    return numSteps >= this.userData.dailyStepGoal
   }
 
   returnAllStepGoalDays() {
-    let stepGoal = this.user.dailyStepGoal;
+    let stepGoal = this.userData.dailyStepGoal;
     return this.singleUserData.filter(day => day.numSteps >= stepGoal).map(day => day.date);
   }
 
@@ -22,17 +25,17 @@ class Activity extends Utility {
   }
 
   returnFriendsStepCount() {
-    let friends = this.user.friends.map(friend => this.activityData.filter(el => el.userID === friend));
+    let friends = this.userData.friends.map(friend => this.dataSet.filter(el => el.userID === friend));
     let friendDataForDates = friends.map(friend => [...friend].splice(-7));
     let totalStepsPerFriend = friendDataForDates.map(friend => friend.reduce((totalSteps, day) => {
       totalSteps += day.numSteps
       return totalSteps
     }, 0));
-    var stepObj = this.user.friends.reduce((friendSteps, friend, index) => {
+    var stepObj = this.userData.friends.reduce((friendSteps, friend, index) => {
       friendSteps[friend] = totalStepsPerFriend[index];
       return friendSteps
     }, {})
-    return [stepObj, this.user.friends[totalStepsPerFriend.indexOf(Math.max(...totalStepsPerFriend))]]
+    return [stepObj, this.userData.friends[totalStepsPerFriend.indexOf(Math.max(...totalStepsPerFriend))]]
   }
 
   returnThreeDayStepStreak() {
@@ -61,7 +64,6 @@ class Activity extends Utility {
     });
     return dates;
   }
-
 }
 
 export default Activity;
