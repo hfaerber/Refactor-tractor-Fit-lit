@@ -70,4 +70,9 @@ describe('Sleep', () => {
     expect(fullSleep.returnWeekOfSleepInfo(2, 'sleepQuality')).to.eql([4.8, 4.7, 3.7, 1.8, 1.5, 4.2, 2]);
   });
 
+  it('should test inheritance', () => {
+    expect(sleep.returnIndividualStatForDate('2019/06/15', 'hoursSlept')).to.equal(6.1);
+    expect(sleep.returnIndividualStatForDate('2019/06/24', 'sleepQuality')).to.equal(1.3);
+  });
+
 });
