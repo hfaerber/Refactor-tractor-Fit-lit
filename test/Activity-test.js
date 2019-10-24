@@ -197,4 +197,9 @@ describe('Activity', () => {
     expect(activity.returnTwoDayStairStreak()).to.eql(['2019/06/26', '2019/06/25']);
   });
 
+  it('should test inheritance', () => {
+    expect(activity.returnIndividualStatForDate('2019/06/15', 'numSteps')).to.equal(3577);
+    expect(activity.returnIndividualStatForDate('2019/06/24', 'flightsOfStairs')).to.equal(15);
+  });
+
 });
