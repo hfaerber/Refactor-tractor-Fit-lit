@@ -31,6 +31,8 @@ import './images/screencapture.png'
 import './images/stopwatch.svg'
 import './images/trophy.svg'
 
+let apiData = [];
+
 //Generate random user
 const uniqueUserIndex = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
 
@@ -64,7 +66,40 @@ function dropYear(dates) {
   })
   return reformattedDates
 }
-$(document).ready(function () {
+// $(document).ready(function () { <I think We dont need this since we have webpack now
+
+// function to fetch data from API
+function fetchData(suffix) {
+  const baseUrl = "https://fe-apps.herokuapp.com/api/v1/fitlit/1908/";
+  const promise = fetch(baseUrl+`${suffix}`)
+    .then(response => response.json())
+  return promise
+}
+
+
+fetchData('users/userData')
+.then(data => console.log(data.userData))
+.then(data => apiData = data)
+.then(data => console.log('APIUSERLOG', apiData))
+.catch(error => console.log('error'));
+
+fetchData('sleep/sleepData')
+.then(data => console.log(data.sleepData))
+.then(data => apiData = data)
+.then(data => console.log('APILOG', apiData))
+.catch(error => console.log('error'));
+
+fetchData('activity/activityData')
+.then(data => console.log(data.activityData))
+.then(data => apiData = data)
+.then(data => console.log('APILOG', apiData))
+.catch(error => console.log('error'));
+
+fetchData('hydration/hydrationData')
+.then(data => console.log(data.hydrationData))
+.then(data => apiData = data)
+.then(data => console.log('APILOG', apiData))
+.catch(error => console.log('error'));
 
   //Packery Items
   // let $grid = $('.grid').packery({
@@ -317,4 +352,4 @@ $(document).ready(function () {
 
   $('.increasing-stairs').html(`${insertStairStreak()}`);
 
-})
+// })
