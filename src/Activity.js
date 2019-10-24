@@ -1,74 +1,45 @@
-class Activity {
-  constructor(activityData, user) {
-    this.activityData = activityData;
-    this.user = user;
-  }
+import Utility from "./Utility";
 
-  findUser() {
-    return this.activityData.filter(person => person.userID === this.user.id);
-  }
-
-  returnWeekOfData(week, userData) {
-    return [...userData].splice((-7 * week), 7);
-  }
-
-  returnNumStepsDay(date) {
-    let specificUser = this.findUser();
-    return specificUser.find(day => day.date === date).numSteps;
+class Activity extends Utility {
+  constructor(dataSet, userID, userData) {
+    super (dataSet, userID);
+    this.userData = userData
   }
 
   returnMilesWalked() {
-    let specificUser = this.findUser();
-    return Number((this.user.strideLength * specificUser[specificUser.length - 1].numSteps / 5280).toFixed(2))
-  }
-
-  returnDaysActivityInfo(date, metric) {
-    let specificUser = this.findUser();
-    return specificUser.find(day => day.date === date)[metric];
-  }
-
-  returnAverageActivityForWeek(week, metric) {
-    let specificUser = this.findUser();
-    let weekOfData = this.returnWeekOfData(week, specificUser);
-    return Math.floor(weekOfData.reduce((totalActivity, eachDay) => {
-      totalActivity += eachDay[metric]
-      return totalActivity
-    }, 0) / 7)
+    return Number((this.userData.strideLength * this.singleUserData[this.singleUserData.length - 1].numSteps / 5280).toFixed(2))
   }
 
   metStepGoal(date) {
-    let specificUser = this.findUser();
-    let numSteps = specificUser.find(day => day.date === date).numSteps
-    return numSteps >= this.user.dailyStepGoal
+    let numSteps = this.singleUserData.find(day => day.date === date).numSteps
+    return numSteps >= this.userData.dailyStepGoal
   }
 
   returnAllStepGoalDays() {
-    let specificUser = this.findUser();
-    let stepGoal = this.user.dailyStepGoal;
-    return specificUser.filter(day => day.numSteps >= stepGoal).map(day => day.date);
+    let stepGoal = this.userData.dailyStepGoal;
+    return this.singleUserData.filter(day => day.numSteps >= stepGoal).map(day => day.date);
   }
 
   returnStairRecord() {
-    let specificUser = this.findUser();
-    return [...specificUser].sort((a, b) => b.flightsOfStairs - a.flightsOfStairs)[0].flightsOfStairs
+    return [...this.singleUserData].sort((a, b) => b.flightsOfStairs - a.flightsOfStairs)[0].flightsOfStairs
   }
 
   returnFriendsStepCount() {
-    let friends = this.user.friends.map(friend => this.activityData.filter(el => el.userID === friend));
+    let friends = this.userData.friends.map(friend => this.dataSet.filter(el => el.userID === friend));
     let friendDataForDates = friends.map(friend => [...friend].splice(-7));
     let totalStepsPerFriend = friendDataForDates.map(friend => friend.reduce((totalSteps, day) => {
       totalSteps += day.numSteps
       return totalSteps
     }, 0));
-    var stepObj = this.user.friends.reduce((friendSteps, friend, index) => {
+    var stepObj = this.userData.friends.reduce((friendSteps, friend, index) => {
       friendSteps[friend] = totalStepsPerFriend[index];
       return friendSteps
     }, {})
-    return [stepObj, this.user.friends[totalStepsPerFriend.indexOf(Math.max(...totalStepsPerFriend))]]
+    return [stepObj, this.userData.friends[totalStepsPerFriend.indexOf(Math.max(...totalStepsPerFriend))]]
   }
 
   returnThreeDayStepStreak() {
-    let specificUser = this.findUser().reverse();
+    let specificUser = this.singleUserData.reverse();
     let dates = [];
     specificUser.some((user, i, specificUser) => {
       if (specificUser[i].numSteps < specificUser[i + 1].numSteps && specificUser[i + 1].numSteps < specificUser[i + 2].numSteps) {
@@ -82,7 +53,7 @@ class Activity {
   }
 
   returnTwoDayStairStreak() {
-    var specificUser = this.findUser().reverse();
+    var specificUser = this.singleUserData.reverse();
     let dates = [];
     specificUser.some((user, i, specificUser) => {
       if (specificUser[i].flightsOfStairs > specificUser[i + 1].flightsOfStairs) {
@@ -93,7 +64,6 @@ class Activity {
     });
     return dates;
   }
-
 }
 
 export default Activity;
