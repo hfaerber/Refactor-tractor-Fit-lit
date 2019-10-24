@@ -32,4 +32,8 @@ describe('Hydration', () => {
   it('should return the amount of ounces consumed for one person over a week', () => {
     expect(hydration.returnWeeklyNumOunces(1)).to.eql([69, 96, 61, 91, 50, 50, 43]);
   });
+
+  it('should test inheritance', () => {
+    expect(hydration.returnIndividualStatForDate('2019/06/15', 'numOunces')).to.equal(37);
+  });
 })

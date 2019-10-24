@@ -43,7 +43,7 @@ const activityRepo = new ActivityRepo(activityData, userData);
 const user = new User(userData[uniqueUserIndex]);
 const hydration = new Hydration(hydrationData, user.id);
 const sleep = new Sleep(allSleepData, user.id);
-const activity = new Activity(activityData, user);
+const activity = new Activity(activityData, user.id, user);
 
 //Date
 const date = activityData.reverse()[0].date;
@@ -96,12 +96,12 @@ $(document).ready(function () {
   $('.date').text(`${formattedDate}`);
 
   //Hydration
-  $('.water-consumed').text(`${hydration.returnDailyFluidOunces(date)} ounces \n\n`);
+  $('.water-consumed').text(`${hydration.returnIndividualStatForDate(date, "numOunces")} ounces \n\n`);
 
   const weeklyOuncesChart = new Chart(document.getElementById('water-consumed-week').getContext('2d'), {
     type: 'horizontalBar',
     data: {
-      labels: dropYear(hydration.returnWeek()),
+      labels: dropYear(hydration.returnWeekDatesOnly(1)),
       datasets: [{
         data: hydration.returnWeeklyNumOunces(),
         backgroundColor: [
@@ -134,12 +134,12 @@ $(document).ready(function () {
   });
 
   //Sleep
-  $('.hours-slept-day').text(`${sleep.returnDaysSleepInfo(date, 'hoursSlept')} hours | ${sleep.returnDaysSleepInfo(date, 'sleepQuality')} quality`);
+  $('.hours-slept-day').text(`${sleep.returnIndividualStatForDate(date, 'hoursSlept')} hours | ${sleep.returnIndividualStatForDate(date, 'sleepQuality')} quality`);
 
   const weeklySleepChart = new Chart(document.getElementById('sleep-week').getContext('2d'), {
     type: 'line',
     data: {
-      labels: dropYear(sleep.returnWeek(1)),
+      labels: dropYear(sleep.returnWeekDatesOnly(1)),
       datasets: [{
         data: sleep.returnWeekOfSleepInfo(1, 'hoursSlept'),
         label: "Sleep Hours",
@@ -148,7 +148,7 @@ $(document).ready(function () {
         lineTension: 0.1
       },
       {
-        data: Array(7).fill(sleep.returnAvgSleepInfo('hoursSlept')),
+        data: Array(7).fill(sleep.returnAvgUserStatForWeek(1, 'hoursSlept')),
         label: "Average Hours of Sleep",
         borderColor: "rgba(92, 117, 218, 0.6)",
         fill: false,
@@ -162,7 +162,7 @@ $(document).ready(function () {
         lineTension: 0.1
       },
       {
-        data: Array(7).fill(sleep.returnAvgSleepInfo('sleepQuality')),
+        data: Array(7).fill(sleep.returnAvgUserStatForWeek(1, 'sleepQuality')),
         label: "Average Quality of Sleep",
         borderColor: "rgba(242, 188, 51, 0.6)",
         fill: false,
@@ -244,28 +244,28 @@ $(document).ready(function () {
       if (value === 0) {
         circle.setText('');
       } else {
-        circle.setText(`${activity.returnNumStepsDay(date)} steps`);
+        circle.setText(`${activity.returnIndividualStatForDate(date, 'numSteps')} steps`);
       }
 
     }
   });
 
-  let percentSteps = activity.returnNumStepsDay(date) / user.dailyStepGoal;
+  let percentSteps = activity.returnIndividualStatForDate(date, 'numSteps') / user.dailyStepGoal;
   bar.animate(percentSteps > 1 ? percentSteps = 1 : percentSteps); // Number from 0.0 to 1.0
 
   $('.number-of-steps-goal').text(`Step Goal: ${user.dailyStepGoal}`);
   $('.avg-number-of-steps-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
-  $('.number-of-minutes-active-day').text(`${activity.returnDaysActivityInfo(date, 'minutesActive')}`);
+  $('.number-of-minutes-active-day').text(`${activity.returnIndividualStatForDate(date, 'minutesActive')}`);
   $('.average-minutes-active').text(`${activityRepo.returnAverage(date, 'minutesActive')}`)
-  $('.distance').text(`${activity.returnDaysActivityInfo(date, 'numSteps')}`);
+  $('.distance').text(`${activity.returnIndividualStatForDate(date, 'numSteps')}`);
   $('.average-distance').text(`${activityRepo.returnAverage(date, 'numSteps')}`)
-  $('.stairs').text(`${activity.returnDaysActivityInfo(date, 'flightsOfStairs')}`);
+  $('.stairs').text(`${activity.returnIndividualStatForDate(date, 'flightsOfStairs')}`);
   $('.average-stairs').text(`${activityRepo.returnAverage(date, 'flightsOfStairs')}`)
   $('.distance-in-miles').text(`${activity.returnMilesWalked()} Miles`);
   $('.most-active').text(`${activityRepo.returnMostActive('minutesActive')[0]}: ${activityRepo.returnMostActive('minutesActive')[1]} minutes`);
-  $('.week-review-minutes').text(`${activity.returnAverageActivityForWeek(1, 'minutesActive')} minutes active`);
-  $('.week-review-steps').text(`${activity.returnAverageActivityForWeek(1, 'numSteps')} steps taken`);
-  $('.week-review-stairs').text(`${activity.returnAverageActivityForWeek(1, 'flightsOfStairs')} flights of stairs`);
+  $('.week-review-minutes').text(`${activity.returnAvgUserStatForWeek(1, 'minutesActive')} minutes active`);
+  $('.week-review-steps').text(`${activity.returnAvgUserStatForWeek(1, 'numSteps')} steps taken`);
+  $('.week-review-stairs').text(`${activity.returnAvgUserStatForWeek(1, 'flightsOfStairs')} flights of stairs`);
 
   // Friends
 
