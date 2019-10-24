@@ -162,7 +162,7 @@ $(document).ready(function () {
         lineTension: 0.1
       },
       {
-        data: Array(7).fill(sleep.returnAvgSleepInfo('sleepQuality')),
+        data: Array(7).fill(sleep.returnAvgUserStatForWeek(1, 'sleepQuality')),
         label: "Average Quality of Sleep",
         borderColor: "rgba(242, 188, 51, 0.6)",
         fill: false,
@@ -257,7 +257,7 @@ $(document).ready(function () {
   $('.avg-number-of-steps-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
   $('.number-of-minutes-active-day').text(`${activity.returnIndividualStatForDate(date, 'minutesActive')}`);
   $('.average-minutes-active').text(`${activityRepo.returnAverage(date, 'minutesActive')}`)
-  $('.distance').text(`${activity.returnDaysActivityInfo(date, 'numSteps')}`);
+  $('.distance').text(`${activity.returnIndividualStatForDate(date, 'numSteps')}`);
   $('.average-distance').text(`${activityRepo.returnAverage(date, 'numSteps')}`)
   $('.stairs').text(`${activity.returnIndividualStatForDate(date, 'flightsOfStairs')}`);
   $('.average-stairs').text(`${activityRepo.returnAverage(date, 'flightsOfStairs')}`)
