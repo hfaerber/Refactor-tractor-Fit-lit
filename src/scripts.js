@@ -34,7 +34,7 @@ import './images/trophy.svg'
 let apiData = [];
 
 //Generate random user
-const uniqueUserIndex = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
+const uniqueUserID = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
 
 //Repo variables
 const userRepo = new UserRepo(userData);
@@ -42,7 +42,7 @@ const sleepRepo = new SleepRepo(allSleepData);
 const activityRepo = new ActivityRepo(activityData, userData);
 
 //Individual Class Repos
-const user = new User(userData[uniqueUserIndex]);
+const user = new User(userRepo.returnUserData(uniqueUserID));
 const hydration = new Hydration(hydrationData, user.id);
 const sleep = new Sleep(allSleepData, user.id);
 const activity = new Activity(activityData, user.id, user);
