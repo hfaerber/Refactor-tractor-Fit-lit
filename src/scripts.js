@@ -8,16 +8,10 @@ import Sleep from "./Sleep";
 import SleepRepo from "./SleepRepo";
 import Activity from "./Activity";
 import ActivityRepo from "./ActivityRepo";
-import activityData from "../data/activity";
-import allSleepData from "../data/sleep";
-import userData from "../data/users";
-import hydrationData from "../data/hydration";
 
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './scss/_normalize.scss';
 import './scss/styles.scss';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/appointment.svg'
 import './images/drop.svg'
 import './images/footsteps-silhouette-variant.svg'
@@ -38,13 +32,13 @@ findTodaysDate();
 
 function findTodaysDate() {
   let dd = today.getDate();
-  let mm = today.getMonth()+1;
+  let mm = today.getMonth() + 1;
   let yyyy = today.getFullYear();
-  if (dd<10) {
-    dd=`0${dd}`;
+  if (dd < 10) {
+    dd = `0${dd}`;
   }
-  if (mm<10) {
-    mm=`0${mm}`;
+  if (mm < 10) {
+    mm = `0${mm}`;
   }
   today = `${yyyy}/${mm}/${dd}`;
 }
@@ -73,107 +67,112 @@ $('.date').text(`${formattedDate}`);
 // Function to fetch data from API
 function fetchData(suffix) {
   const baseUrl = "https://fe-apps.herokuapp.com/api/v1/fitlit/1908/";
-  const promise = fetch(baseUrl+`${suffix}`)
+  const promise = fetch(baseUrl + `${suffix}`)
     .then(response => response.json())
   return promise
 }
 
 // Fetch userData
 fetchData('users/userData')
-.then(userData => {
-  const userRepo = new UserRepo(userData.userData);
-  const user = new User(userRepo.returnUserData(uniqueUserID));
-  // Function to find user name
-  function findUserName(id) {
-    return userData.userData.find(user => user.id === id).name;
-  }
-  //User Section
-  $('.username').text(`${user.returnUserName()}`)
+  .then(userData => {
+    const userRepo = new UserRepo(userData.userData);
+    const user = new User(userRepo.returnUserData(uniqueUserID));
+    // Function to find user name
+    function findUserName(id) {
+      return userData.userData.find(user => user.id === id).name;
+    }
+    //User Section
+    $('.username').text(`${user.returnUserName()}`)
 
-// Fetch sleepData
-  fetchData('sleep/sleepData')
-  .then(sleepData => {
-    const sleepRepo = new SleepRepo(sleepData.sleepData);
-    const sleep = new Sleep(sleepData.sleepData, user.id);
-    //Sleep
-    $('.hours-slept-day').text(`${sleep.returnIndividualStatForDate(today, 'hoursSlept')} hours | ${sleep.returnIndividualStatForDate(today, 'sleepQuality')} quality`);
+    // Fetch sleepData
+    fetchData('sleep/sleepData')
+      .then(sleepData => {
+        const sleepRepo = new SleepRepo(sleepData.sleepData);
+        const sleep = new Sleep(sleepData.sleepData, user.id);
+        //Sleep
+        $('.hours-slept-day').text(`${sleep.returnIndividualStatForDate(today,
+          'hoursSlept')} hours | ${sleep.returnIndividualStatForDate(today,
+          'sleepQuality')} quality`);
 
-    const weeklySleepChart = new Chart(document.getElementById('sleep-week').getContext('2d'), {
-      type: 'line',
-      data: {
-        labels: dropYear(sleep.returnWeekDatesOnly(1)),
-        datasets: [{
-          data: sleep.returnWeekOfSleepInfo(1, 'hoursSlept'),
-          label: "Sleep Hours",
-          borderColor: "rgba(92, 117, 218, 0.6)",
-          fill: false,
-          lineTension: 0.1
-        },
-        {
-          data: Array(7).fill(sleep.returnAvgUserStatForWeek(1, 'hoursSlept')),
-          label: "Average Hours of Sleep",
-          borderColor: "rgba(92, 117, 218, 0.6)",
-          fill: false,
-          borderDash: [10, 5]
-        },
-        {
-          data: sleep.returnWeekOfSleepInfo(1, 'sleepQuality'),
-          label: "Quality of Sleep",
-          borderColor: "rgba(242, 188, 51, 0.6)",
-          fill: false,
-          lineTension: 0.1
-        },
-        {
-          data: Array(7).fill(sleep.returnAvgUserStatForWeek(1, 'sleepQuality')),
-          label: "Average Quality of Sleep",
-          borderColor: "rgba(242, 188, 51, 0.6)",
-          fill: false,
-          borderDash: [10, 5]
-        }
-        ]
-
-      },
-      options: {
-        elements: {
-          point: {
-            radius: 0
-          }
-        },
-        legend: {
-          display: false,
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true,
-              fontColor: "rgba(92, 117, 218, 0.6)"
+    const weeklySleepChart = new Chart(document.getElementById('sleep-week')
+          .getContext('2d'), {
+          type: 'line',
+          data: {
+            labels: dropYear(sleep.returnWeekDatesOnly(1)),
+            datasets: [{
+              data: sleep.returnWeekOfSleepInfo(1, 'hoursSlept'),
+              label: "Sleep Hours",
+              borderColor: "rgba(92, 117, 218, 0.6)",
+              fill: false,
+              lineTension: 0.1
             },
-            scaleLabel: {
-              display: true,
-              labelString: 'hours'
+            {
+              data: Array(7).fill(sleep.returnAvgUserStatForWeek(1, 'hoursSlept')),
+              label: "Average Hours of Sleep",
+              borderColor: "rgba(92, 117, 218, 0.6)",
+              fill: false,
+              borderDash: [10, 5]
             },
-
-          }, {
-            id: 'Quality of Sleep',
-            type: 'linear',
-            position: 'right',
-            ticks: {
-              beginAtZero: true,
-              min: 0,
-              max: 10,
-              fontColor: "rgba(242, 188, 51, 0.6)"
+            {
+              data: sleep.returnWeekOfSleepInfo(1, 'sleepQuality'),
+              label: "Quality of Sleep",
+              borderColor: "rgba(242, 188, 51, 0.6)",
+              fill: false,
+              lineTension: 0.1
             },
-            scaleLabel: {
-              display: true,
-              labelString: 'quality'
+            {
+              data: Array(7).fill(sleep.returnAvgUserStatForWeek(1, 'sleepQuality')),
+              label: "Average Quality of Sleep",
+              borderColor: "rgba(242, 188, 51, 0.6)",
+              fill: false,
+              borderDash: [10, 5]
             }
-          }]
-        }
-      }
-    });
+            ]
 
-    $('.longest-sleepers').text(`${findUserName(sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[1])}: ${sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[0]} hours`);
-  })
+          },
+          options: {
+            elements: {
+              point: {
+                radius: 0
+              }
+            },
+            legend: {
+              display: false,
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  fontColor: "rgba(92, 117, 218, 0.6)"
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'hours'
+                },
+
+              }, {
+                id: 'Quality of Sleep',
+                type: 'linear',
+                position: 'right',
+                ticks: {
+                  beginAtZero: true,
+                  min: 0,
+                  max: 10,
+                  fontColor: "rgba(242, 188, 51, 0.6)"
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'quality'
+                }
+              }]
+            }
+          }
+        });
+
+        $('.longest-sleepers').text(`${findUserName(
+          sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[1])}:
+            ${sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[0]} hours`);
+      })
   .catch(error => console.log('sleepData error'));
 
 // Fetch activityData
