@@ -69,37 +69,62 @@ function dropYear(dates) {
 // $(document).ready(function () { <I think We dont need this since we have webpack now
 
 // function to fetch data from API
-function fetchData(suffix) {
-  const baseUrl = "https://fe-apps.herokuapp.com/api/v1/fitlit/1908/";
-  const promise = fetch(baseUrl+`${suffix}`)
-    .then(response => response.json())
-  return promise
-}
+// function fetchData(suffix) {
+//   const baseUrl = "https://fe-apps.herokuapp.com/api/v1/fitlit/1908/";
+//   const promise = fetch(baseUrl+`${suffix}`)
+//     .then(response => response.json())
+//   return promise
+// }
 
 
-fetchData('users/userData')
-.then(data => console.log(data.userData))
-.then(data => apiData = data)
-.then(data => console.log('APIUSERLOG', apiData))
-.catch(error => console.log('error'));
 
-fetchData('sleep/sleepData')
-.then(data => console.log(data.sleepData))
-.then(data => apiData = data)
-.then(data => console.log('APILOG', apiData))
-.catch(error => console.log('error'));
 
-fetchData('activity/activityData')
-.then(data => console.log(data.activityData))
-.then(data => apiData = data)
-.then(data => console.log('APILOG', apiData))
-.catch(error => console.log('error'));
+// function fetchDataPost(suffix) {
+//   const baseUrl = "https://fe-apps.herokuapp.com/api/v1/fitlit/1908/";
+//   const promise = fetch(baseUrl+`${suffix}`;
+//   return promise
+// }
+//
+// function postData() {
+//   fetchDataPost('sleep/sleepData')
 
-fetchData('hydration/hydrationData')
-.then(data => console.log(data.hydrationData))
-.then(data => apiData = data)
-.then(data => console.log('APILOG', apiData))
-.catch(error => console.log('error'));
+
+fetch("https://fe-apps.herokuapp.com/api/v1/fitlit/1908/'sleep/sleepData", {
+    {
+      method: 'Post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(
+      {
+        "userId": whateverIsONPageLoad,
+        "date": dateVariable,
+        "hoursSlept": userInput1.value,
+        "sleepQuality": userInput2.value,
+      })
+    })
+      .then(response => response.json());
+      .then(data => console.log(data))
+      .catch(error => console.log('error'));
+};
+
+// Build the post object in a variable (ex: sleepBody, activityBody, etc.)
+
+// fetchData('sleep/sleepData' {
+//   method: 'Post',
+//   headers: {'Content-Type': 'application/json'},
+//   body: JSON.stringify({"": })
+// })
+//
+// fetchData('activity/activityData' {
+//   method: 'Post',
+//   headers: {'Content-Type': 'application/json'},
+//   body: JSON.stringify({"": })
+// })
+//
+// fetchData('hydration/hydrationData' {
+//   method: 'Post',
+//   headers: {'Content-Type': 'application/json'},
+//   body: JSON.stringify({"": })
+// })
 
   //Packery Items
   // let $grid = $('.grid').packery({

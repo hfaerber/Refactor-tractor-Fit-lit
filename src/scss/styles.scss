@@ -168,3 +168,10 @@ img {
 p {
   @include font-look(3.5em, 200);
 }
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
