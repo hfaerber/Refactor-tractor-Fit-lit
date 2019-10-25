@@ -314,7 +314,7 @@ fetchData('hydration/hydrationData')
       let userName = findUserName(Number(userID));
       list += `<li class="friends_li">
              <p class="friends--steps"><b>${userName}</b>:</p>
-             <p>${activity.returnFriendsStepCount()[0][userID]} steps</p>`;
+             <p class="friends-steps-number">${activity.returnFriendsStepCount()[0][userID]} steps</p>`;
     });
 
     list += `<li class="friends_li">
