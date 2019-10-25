@@ -4,7 +4,6 @@ class UserRepo {
   }
 
   returnUserData(userID) {
-    console.log(this.data.find(user => user.id === userID))
     return this.data.find(user => user.id === userID);
   }
 
