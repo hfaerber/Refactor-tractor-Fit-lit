@@ -287,7 +287,7 @@ fetchData('users/userData')
 // Fetch hydrationData
   fetchData('hydration/hydrationData')
   .then(hydrationData => {
-    const hydration = new Hydration(hydrationData, user.id);
+    const hydration = new Hydration(hydrationData.hydrationData, user.id);
     //Hydration
     $('.water-consumed').text(`${hydration.returnIndividualStatForDate(today, "numOunces")} ounces \n\n`);
 
