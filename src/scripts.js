@@ -31,8 +31,6 @@ import './images/screencapture.png'
 import './images/stopwatch.svg'
 import './images/trophy.svg'
 
-let apiData = [];
-
 //Generate random user
 const uniqueUserID = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
 
@@ -48,8 +46,23 @@ const sleep = new Sleep(allSleepData, user.id);
 const activity = new Activity(activityData, user.id, user);
 
 //Date
-const date = activityData.reverse()[0].date;
-const dateObject = new Date(date);
+let today = new Date();
+findTodaysDate();
+
+function findTodaysDate() {
+  let dd = today.getDate();
+  let mm = today.getMonth()+1;
+  let yyyy = today.getFullYear();
+  if (dd<10) {
+    dd=`0${dd}`;
+  }
+  if (mm<10) {
+    mm=`0${mm}`;
+  }
+  today = `${yyyy}/${mm}/${dd}`;
+}
+
+const dateObject = new Date(today);
 const options = {
   weekday: 'long',
   year: 'numeric',
@@ -66,7 +79,6 @@ function dropYear(dates) {
   })
   return reformattedDates
 }
-// $(document).ready(function () { <I think We dont need this since we have webpack now
 
 // function to fetch data from API
 function fetchData(suffix) {
@@ -76,29 +88,19 @@ function fetchData(suffix) {
   return promise
 }
 
-
 fetchData('users/userData')
 .then(data => console.log(data.userData))
-.then(data => apiData = data)
-.then(data => console.log('APIUSERLOG', apiData))
 .catch(error => console.log('error'));
 
 fetchData('sleep/sleepData')
 .then(data => console.log(data.sleepData))
-.then(data => apiData = data)
-.then(data => console.log('APILOG', apiData))
 .catch(error => console.log('error'));
 
 fetchData('activity/activityData')
 .then(data => console.log(data.activityData))
-.then(data => apiData = data)
-.then(data => console.log('APILOG', apiData))
 .catch(error => console.log('error'));
 
 fetchData('hydration/hydrationData')
-.then(data => console.log(data.hydrationData))
-.then(data => apiData = data)
-.then(data => console.log('APILOG', apiData))
 .catch(error => console.log('error'));
 
   //Packery Items
@@ -296,7 +298,7 @@ fetchData('hydration/hydrationData')
   $('.average-distance').text(`${activityRepo.returnAverage(date, 'numSteps')}`)
   $('.stairs').text(`${activity.returnIndividualStatForDate(date, 'flightsOfStairs')}`);
   $('.average-stairs').text(`${activityRepo.returnAverage(date, 'flightsOfStairs')}`)
-  $('.distance-in-miles').text(`${activity.returnMilesWalked()} Miles`);
+  $('.distance-in-miles').text(`${activity.returnMilesWalked(date)} Miles`);
   $('.most-active').text(`${activityRepo.returnMostActive('minutesActive')[0]}: ${activityRepo.returnMostActive('minutesActive')[1]} minutes`);
   $('.week-review-minutes').text(`${activity.returnAvgUserStatForWeek(1, 'minutesActive')} minutes active`);
   $('.week-review-steps').text(`${activity.returnAvgUserStatForWeek(1, 'numSteps')} steps taken`);
