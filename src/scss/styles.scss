@@ -96,7 +96,7 @@ canvas {
   letter-spacing: 1px;
 }
 
-.data-article {
+.data-subsection {
   @include margin(40px, 0px, 40px, 0px);
   text-align: center;
 }
@@ -223,10 +223,6 @@ p {
   .data-section {
     margin-left: 0;
     padding: 10px;
-    width: 90%;
-  }
-
-  .data-section {
     width: 98%;
   }
 
@@ -331,6 +327,7 @@ p {
 @media screen and (min-width: 1000px) {
   h1 {
     @include font-look(6em, 300);
+  }
 
   .username {
     @include font-look(1em, 600);
@@ -368,5 +365,4 @@ p {
   p {
     @include font-look(3.5em, 200);
   }
-
 }
