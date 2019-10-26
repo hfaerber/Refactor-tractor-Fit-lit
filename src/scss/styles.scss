@@ -188,22 +188,22 @@ p {
   .fitlit-logo {
     width: 38%;
   }
-  
+
   .name-date-wrapper {
     display: flex;
     flex-direction: column-reverse;
   }
-  
+
   .date {
     width: 65%;
     height: 30px;
     font-size: .8em;
     color: $header-font-color;
     background-color: $body-background-color;
-    float: left; 
+    float: left;
     margin-bottom: 0;
   }
-  
+
   .welcome-message {
     display: flex;
     flex-direction: row;
@@ -219,7 +219,7 @@ p {
     flex-direction: column;
     margin-left: 5px;
   }
-                  
+
   .data-section {
     margin-left: 0;
     padding: 10px;
@@ -229,7 +229,7 @@ p {
   .data-section {
     width: 98%;
   }
-  
+
   .data-heading {
     font-size: 165%;
     margin-left: 0;
@@ -326,4 +326,47 @@ p {
   .data-text {
     font-size: 1em;
   }
+}
+
+@media screen and (min-width: 1000px) {
+  h1 {
+    @include font-look(6em, 300);
+
+  .username {
+    @include font-look(1em, 600);
+  }
+
+  .date {
+    @include font-look(3em, 600);
+  }
+
+  .data-heading {
+    @include font-look(6em, 200);
+  }
+
+  .data-text {
+    @include font-look(3.5em, 300);
+  }
+
+  .subtext,
+  .user-average {
+    @include font-look(3em, 700);
+  }
+
+  .number-of-steps-day {
+    @include font-look(1.2em, 200);
+  }
+
+  .streak-heading {
+    @include font-look(3.5em, 700);
+  }
+
+  .date_li {
+    @include font-look(.3em, 200);
+  }
+
+  p {
+    @include font-look(3.5em, 200);
+  }
+
 }
