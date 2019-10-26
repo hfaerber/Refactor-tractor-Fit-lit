@@ -179,6 +179,7 @@ form {
 
 .hydration-form {
   display: none;
+  height: 200px;
 }
 
 .activity-form {
@@ -187,26 +188,40 @@ form {
 
 .post__btn--container {
   display: flex;
+  height: 60px;
   justify-content: space-between;
 }
 
-.show__hydration--btn {
-
-}
-
-.show__activity--btn {
-
-}
-
+.show__hydration--btn,
+.show__activity--btn,
 .show__sleep--btn {
+  height: 100%;
+    &:hover {
+      background-color: #4C8BE4;
+      border: 1px solid black;
+      color: white;
+    }
+}
 
+.activity__submit--btn,
+.hydration__submit--btn,
+.sleep__submit--btn {
+
+    &:hover {
+      background-color: #4C8BE4;
+      border: 1px solid black;
+      color: white;
+    }
 }
 
 label {
-  margin-bottom: 10px;
 }
 
 .input-container {
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  justify-content: space-between;
   text-indent: 3px;
   text-align: left;
   width: 100%;
