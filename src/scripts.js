@@ -169,11 +169,11 @@ fetchData('users/userData')
         });
 
         $('.longest-sleeper').text(`${findUserName(
-          sleepRepo.returnWeeklyLongestSleeper(1, 'hoursSlept')[1])}:
-            ${sleepRepo.returnWeeklyLongestSleeper(1, 'hoursSlept')[0]} hours`);
+          sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[1])}:
+            ${sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[0]} hours`);
       })
 
-  .catch(error => console.log('sleepData error'));
+  // .catch(error => console.log('sleepData error'));
 
   // Fetch activityData
   fetchData('activity/activityData')
@@ -328,82 +328,97 @@ fetchData('users/userData')
 // *****END OF .THEN FOR USERDATA**************************
 
 // Event listeners for show post-data form buttons
-$(".show__activity--btn").on('click', function() {
-  $(".activity-form").toggle();
-  $(".hydration-form").hide();
-  $(".sleep-form").hide()
+$('.show__activity--btn').on('click', function() {
+  $('.activity-form').toggle();
+  $('.hydration-form').hide();
+  $('.sleep-form').hide()
 });
 
-$(".show__hydration--btn").on('click', function() {
-  $(".hydration-form").toggle();
-  $(".activity-form").hide();
-  $(".sleep-form").hide()
+$('.show__hydration--btn').on('click', function() {
+  $('.hydration-form').toggle();
+  $('.activity-form').hide();
+  $('.sleep-form').hide()
 });
 
-$(".show__sleep--btn").on('click', function() {
-  $(".sleep-form").toggle();
-  $(".hydration-form").hide();
-  $(".activity-form").hide()
+$('.show__sleep--btn').on('click', function() {
+  $('.sleep-form').toggle();
+  $('.hydration-form').hide();
+  $('.activity-form').hide()
 });
 
 // Event Listeners for submit post-data buttons
-$('.sleep__submit--btn').on('click', postSleep());
-$('.activity__submit--btn').on('click', postActivity());
-$('.hydration__submit--btn').on('click', postHydration());
-
-function postSleep() {
-  const sleepBody =
-    {
-      "userId": uniqueUserID,
-      "date": today,
-      "hoursSlept": $(.'hours-slept').val(),
-      "sleepQuality": $(.'sleep-quality').val(),
-    };
-
-  fetch("https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData", {
-    method: 'post',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(sleepBody)
-  })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.log('error'))
+// $('.sleep__submit--btn').on('click', postSleep());
+// $('.activity__submit--btn').on('click', postActivity());
+// $('.hydration__submit--btn').on('click', postHydration());
+//
+// function postSleep() {
+//   const sleepBody =
+//     {
+//       userID: uniqueUserID,
+//       date: '2023/01/01',
+//       hoursSlept: $('.hours-slept').val(),
+//       sleepQuality: $('.sleep-quality').val()
+//     };
+//
+//   if ($('.hours-slept').length > 0 && $('.sleep-quality').length > 0) {
+//     fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(sleepBody)
+//     })
+//       .then(response => response.json())
+      // .then(data => console.log(data))
+      // .catch(error => console.log('error'))
+    }
 };
 
-function postActivity() {
-  const activityBody =
-    {
-      "userId": uniqueUserID,
-      "date": today,
-      "numSteps": $(.'num-steps').val(),
-      "minutesActive": $(.'minutes-active').val(),
-      "flightsOfStairs": $(.'flights-stairs').val(),
-    };
+// A 422 status code occurs when a request is well-formed, however, due to semantic errors it is unable to be processed.
 
-  fetch("https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData", {
-    method: 'post',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(activityBody)
-  })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.log('error'));
-}
-
-function postHydration() {
-  const hydrationBody =
-    {
-      "userId": uniqueUserID,
-      "date": today,
-      "numOunces": $(.'num-ounces').val(),
-    };
-
-  fetch("https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData", {
-    method: 'post',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(hydrationBody)
-  })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.log('error'));
-}
+//
+// function postActivity() {
+//   const activityBody =
+//     {
+//       "userID": uniqueUserID,
+//       "date": today,
+//       "numSteps": $('.num-steps').val(),
+//       "minutesActive": $('.minutes-active').val(),
+//       "flightsOfStairs": $('.flights-stairs').val(),
+//     };
+//
+//   if ($('.num-steps').length > 0 && $('.minutes-active').length > 0 && $('.flights-stairs').length > 0) {
+//     fetch("https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData", {
+//       method: 'post',
+//       headers: {
+//           'Content-Type': 'application/json'
+//         },
+//       body: JSON.stringify(activityBody)
+//     })
+//       .then(response => response.json())
+//       .then(data => console.log(data))
+//       .catch(error => console.log('error'))
+//   }
+// };
+//
+// function postHydration() {
+//   const hydrationBody =
+//     {
+//       "userID": uniqueUserID,
+//       "date": today,
+//       "numOunces": $('.num-ounces').val(),
+//     };
+//
+//   if ($('.num-ounces').length > 0) {
+//     fetch("https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData", {
+//       method: 'post',
+//       headers: {
+//           'Content-Type': 'application/json'
+//         },
+//       body: JSON.stringify(hydrationBody)
+//     })
+//       .then(response => response.json())
+//       .then(data => console.log(data))
+//       .catch(error => console.log('error'))
+//   }
+// }
