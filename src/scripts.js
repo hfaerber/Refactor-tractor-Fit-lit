@@ -169,9 +169,9 @@ fetchData('users/userData')
           }
         });
 
-        $('.longest-sleepers').text(`${findUserName(
-          sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[1])}:
-            ${sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[0]} hours`);
+        $('.longest-sleeper').text(`${findUserName(
+          sleepRepo.returnWeeklyLongestSleeper(1, 'hoursSlept')[1])}:
+            ${sleepRepo.returnWeeklyLongestSleeper(1, 'hoursSlept')[0]} hours`);
       })
   .catch(error => console.log('sleepData error'));
 
