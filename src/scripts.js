@@ -128,7 +128,7 @@ fetchData('users/userData')
               borderDash: [10, 5]
             }
             ]
-            
+
           },
           options: {
             elements: {
@@ -327,6 +327,7 @@ fetchData('users/userData')
 .catch(error => console.log('userData error'));
 // *****END OF .THEN FOR USERDATA**************************
 
+// Event listeners for show post-data form buttons
 $(".show__activity--btn").on('click', function() {
   $(".activity-form").toggle();
   $(".hydration-form").hide();
@@ -345,36 +346,64 @@ $(".show__sleep--btn").on('click', function() {
   $(".activity-form").hide()
 });
 
-// const sleepPostBody =
-//   {
-//     "userId": whateverIsONPageLoad,
-//     "date": dateVariable,
-//     "hoursSlept": userInput1.value,
-//     "sleepQuality": userInput2.value,
-//   };
-//
-// const activityPostBody =
-//   {
-//     "userId": whateverIsONPageLoad,
-//     "date": dateVariable,
-//     "hoursSlept": userInput1.value,
-//     "sleepQuality": userInput2.value,
-//   };
-//
-// const hydrationPostBody =
-//   {
-//     "userId": whateverIsONPageLoad,
-//     "date": dateVariable,
-//     "hoursSlept": userInput1.value,
-//     "sleepQuality": userInput2.value,
-//   };
+// Event Listeners for submit post-data buttons
+$('.sleep__submit--btn').on('click', postSleep());
+$('.activity__submit--btn').on('click', postActivity());
+$('.hydration__submit--btn').on('click', postHydration());
 
-// fetch("https://fe-apps.herokuapp.com/api/v1/fitlit/1908/'sleep/sleepData", {
-//   method: 'Post',
-//   headers: {'Content-Type': 'application/json'},
-//   body: JSON.stringify(sleepPostBody)
-// })
-//   .then(response => response.json());
-//   .then(data => console.log(data))
-//   .catch(error => console.log('error'));
-// Do I need closing punctuation here?
+function postSleep() {
+  const sleepBody =
+    {
+      "userId": uniqueUserID,
+      "date": today,
+      "hoursSlept": $(.'hours-slept').val(),
+      "sleepQuality": $(.'sleep-quality').val(),
+    };
+
+  fetch("https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData", {
+    method: 'post',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(sleepBody)
+  })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log('error'))
+};
+
+function postActivity() {
+  const activityBody =
+    {
+      "userId": uniqueUserID,
+      "date": today,
+      "numSteps": $(.'num-steps').val(),
+      "minutesActive": $(.'minutes-active').val(),
+      "flightsOfStairs": $(.'flights-stairs').val(),
+    };
+
+  fetch("https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData", {
+    method: 'post',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(activityBody)
+  })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log('error'));
+}
+
+function postHydration() {
+  const hydrationBody =
+    {
+      "userId": uniqueUserID,
+      "date": today,
+      "numOunces": $(.'num-ounces').val(),
+    };
+
+  fetch("https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData", {
+    method: 'post',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(hydrationBody)
+  })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log('error'));
+}
