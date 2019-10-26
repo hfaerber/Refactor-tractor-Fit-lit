@@ -76,56 +76,6 @@ function dropYear(dates) {
 //   return promise
 // }
 
-
-
-
-// function fetchDataPost(suffix) {
-//   const baseUrl = "https://fe-apps.herokuapp.com/api/v1/fitlit/1908/";
-//   const promise = fetch(baseUrl+`${suffix}`;
-//   return promise
-// }
-//
-// function postData() {
-//   fetchDataPost('sleep/sleepData')
-
-
-fetch("https://fe-apps.herokuapp.com/api/v1/fitlit/1908/'sleep/sleepData", {
-    {
-      method: 'Post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(
-      {
-        "userId": whateverIsONPageLoad,
-        "date": dateVariable,
-        "hoursSlept": userInput1.value,
-        "sleepQuality": userInput2.value,
-      })
-    })
-      .then(response => response.json());
-      .then(data => console.log(data))
-      .catch(error => console.log('error'));
-};
-
-// Build the post object in a variable (ex: sleepBody, activityBody, etc.)
-
-// fetchData('sleep/sleepData' {
-//   method: 'Post',
-//   headers: {'Content-Type': 'application/json'},
-//   body: JSON.stringify({"": })
-// })
-//
-// fetchData('activity/activityData' {
-//   method: 'Post',
-//   headers: {'Content-Type': 'application/json'},
-//   body: JSON.stringify({"": })
-// })
-//
-// fetchData('hydration/hydrationData' {
-//   method: 'Post',
-//   headers: {'Content-Type': 'application/json'},
-//   body: JSON.stringify({"": })
-// })
-
   //Packery Items
   // let $grid = $('.grid').packery({
   //   itemSelector: '.grid-item',
@@ -377,4 +327,54 @@ fetch("https://fe-apps.herokuapp.com/api/v1/fitlit/1908/'sleep/sleepData", {
 
   $('.increasing-stairs').html(`${insertStairStreak()}`);
 
-// })
+  // const sleepPostBody =
+  //   {
+  //     "userId": whateverIsONPageLoad,
+  //     "date": dateVariable,
+  //     "hoursSlept": userInput1.value,
+  //     "sleepQuality": userInput2.value,
+  //   };
+  //
+  // const activityPostBody =
+  //   {
+  //     "userId": whateverIsONPageLoad,
+  //     "date": dateVariable,
+  //     "hoursSlept": userInput1.value,
+  //     "sleepQuality": userInput2.value,
+  //   };
+  //
+  // const hydrationPostBody =
+  //   {
+  //     "userId": whateverIsONPageLoad,
+  //     "date": dateVariable,
+  //     "hoursSlept": userInput1.value,
+  //     "sleepQuality": userInput2.value,
+  //   };
+
+  // fetch("https://fe-apps.herokuapp.com/api/v1/fitlit/1908/'sleep/sleepData", {
+  //   method: 'Post',
+  //   headers: {'Content-Type': 'application/json'},
+  //   body: JSON.stringify(sleepPostBody)
+  // })
+  //   .then(response => response.json());
+  //   .then(data => console.log(data))
+  //   .catch(error => console.log('error'));
+  // Do I need closing punctuation here?
+
+  $(".show__activity--btn").on('click', function() {
+    $(".activity-form").toggle();
+    $(".hydration-form").hide();
+    $(".sleep-form").hide()
+  });
+
+  $(".show__hydration--btn").on('click', function() {
+    $(".hydration-form").toggle();
+    $(".activity-form").hide();
+    $(".sleep-form").hide()
+  });
+
+  $(".show__sleep--btn").on('click', function() {
+    $(".sleep-form").toggle();
+    $(".hydration-form").hide();
+    $(".activity-form").hide()
+  });

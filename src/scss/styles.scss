@@ -169,6 +169,48 @@ p {
   @include font-look(3.5em, 200);
 }
 
+form {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hydration-form {
+  display: none;
+}
+
+.activity-form {
+  display: none;
+}
+
+.post__btn--container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.show__hydration--btn {
+
+}
+
+.show__activity--btn {
+
+}
+
+.show__sleep--btn {
+
+}
+
+input {
+  width: 90%;
+    &:invalid {
+  border: 2px dashed red;
+    }
+    &:valid {
+    border: 2px solid black;
+    }
+}
+
 @media screen and (max-width: 600px) {
   body {
     display: flex;
