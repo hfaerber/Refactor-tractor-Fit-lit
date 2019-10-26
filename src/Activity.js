@@ -6,8 +6,8 @@ class Activity extends Utility {
     this.userData = userData
   }
 
-  returnMilesWalked() {
-    return Number((this.userData.strideLength * this.singleUserData[this.singleUserData.length - 1].numSteps / 5280).toFixed(2))
+  returnMilesWalked(date) {
+    return Number((this.userData.strideLength * this.singleUserData.find(day => day.date === date).numSteps / 5280).toFixed(2))
   }
 
   metStepGoal(date) {

@@ -26,7 +26,7 @@ describe('Activity', () => {
   });
 
   it('should return the miles walked by a specific user for a specific day', () => {
-    expect(activity.returnMilesWalked()).to.equal(6.60);
+    expect(activity.returnMilesWalked('2019/06/26')).to.equal(6.60);
   });
 
   describe('metStepGoal', () => {
