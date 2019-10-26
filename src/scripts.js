@@ -180,45 +180,6 @@ fetchData('users/userData')
   .then(activityData => {
     const activityRepo = new ActivityRepo(activityData.activityData, userData.userData);
     const activity = new Activity(activityData.activityData, user.id, user);
-    //Activity Section
-    var bar = new ProgressBar.Circle('.number-of-steps-day', {
-      color: '#aaa',
-      svgStyle: {
-        display: 'block',
-        width: '100%'
-      },
-      strokeWidth: 5,
-      trailWidth: 2,
-      easing: 'easeInOut',
-      duration: 1400,
-      text: {
-        autoStyleContainer: true
-      },
-      from: {
-        color: '#fff940',
-        width: 2
-      },
-      to: {
-        color: '#f2bc33',
-        width: 5
-      },
-
-      step(state, circle) {
-        circle.path.setAttribute('stroke', state.color);
-        circle.path.setAttribute('stroke-width', state.width);
-
-        var value = circle.value();
-        if (value === 0) {
-          circle.setText('');
-        } else {
-          circle.setText(`${activity.returnIndividualStatForDate(today, 'numSteps')} steps`);
-        }
-
-      }
-    }
-  });
-
-  $('.longest-sleepers').text(`${findUserName(sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[1])}: ${sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[0]} hours`);
 
   //Activity Section
 
@@ -252,43 +213,11 @@ fetchData('users/userData')
       if (value === 0) {
         circle.setText('');
       } else {
-        circle.setText(`${activity.returnIndividualStatForDate(date, 'numSteps')} steps`);
+        circle.setText(`${activity.returnIndividualStatForDate(today, 'numSteps')} steps`);
       }
 
     }
   });
-
-  let percentSteps = activity.returnIndividualStatForDate(date, 'numSteps') / user.dailyStepGoal;
-  bar.animate(percentSteps > 1 ? percentSteps = 1 : percentSteps); // Number from 0.0 to 1.0
-
-  $('.number-of-steps-goal').text(`Step Goal: ${user.dailyStepGoal}`);
-  $('.avg-number-of-steps-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
-  $('.number-of-minutes-active-day').text(`${activity.returnIndividualStatForDate(date, 'minutesActive')}`);
-  $('.average-minutes-active').text(`${activityRepo.returnAverage(date, 'minutesActive')}`)
-  $('.distance').text(`${activity.returnIndividualStatForDate(date, 'numSteps')}`);
-  $('.average-distance').text(`${activityRepo.returnAverage(date, 'numSteps')}`)
-  $('.stairs').text(`${activity.returnIndividualStatForDate(date, 'flightsOfStairs')}`);
-  $('.average-stairs').text(`${activityRepo.returnAverage(date, 'flightsOfStairs')}`)
-  $('.distance-in-miles').text(`${activity.returnMilesWalked()} Miles`);
-  $('.most-active').text(`${activityRepo.returnMostActive('minutesActive')[0]}: ${activityRepo.returnMostActive('minutesActive')[1]} minutes`);
-  $('.week-review-minutes').text(`${activity.returnAvgUserStatForWeek(1, 'minutesActive')} minutes active`);
-  $('.week-review-steps').text(`${activity.returnAvgUserStatForWeek(1, 'numSteps')} steps taken`);
-  $('.week-review-stairs').text(`${activity.returnAvgUserStatForWeek(1, 'flightsOfStairs')} flights of stairs`);
-
-  // Friends
-
-  let userIDs = Object.keys(activity.returnFriendsStepCount()[0]);
-
-  function insertFriendSteps() {
-    let list = `<ul class="friends_ul">`
-    let highestStepCountUserId = Number(activity.returnFriendsStepCount()[1]);
-    let highestStepCountUserName = findUserName(highestStepCountUserId);
-    userIDs.forEach(userID => {
-      let userName = findUserName(Number(userID));
-      list += `<li class="friends_li">
-             <p class="friends--steps"><b>${userName}</b>:</p>
-             <p class="friends-steps-number">${activity.returnFriendsStepCount()[0][userID]} steps</p>`;
-    });
 
     let percentSteps = activity.returnIndividualStatForDate(today, 'numSteps') / user.dailyStepGoal;
     bar.animate(percentSteps > 1 ? percentSteps = 1 : percentSteps); // Number from 0.0 to 1.0
