@@ -26,11 +26,7 @@ describe('Sleep', () => {
   });
 
   it('should be able return a week\'s worth of sleep data for a user', () => {
-    expect(sleep.returnWeekOfSleepInfo(1, 'sleepQuality')).to.eql([1.2, 1.2, 4.2, 3, 1.5, 1.3, 3.7]);
+    expect(sleep.returnWeekOfSleepInfo('2019/06/25', 'sleepQuality')).to.eql([1.2, 1.2, 4.2, 3, 1.5, 1.3, 3.7]);
   });
 
-  it('should test inheritance', () => {
-    expect(sleep.returnIndividualStatForDate('2019/06/15', 'hoursSlept')).to.equal(6.1);
-    expect(sleep.returnIndividualStatForDate('2019/06/24', 'sleepQuality')).to.equal(1.3);
-  });
 });

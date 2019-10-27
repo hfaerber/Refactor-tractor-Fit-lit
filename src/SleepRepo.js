@@ -22,17 +22,18 @@ class SleepRepo {
     return dataByUser
   }
 
-  returnUsersWeeklyTotals(week, metric) {
-    let dataByUser = this.organizeByUser();
-    let usersWeeklyTotals = dataByUser.map(user => [...user].splice(-7 * week, 7)).map(user => user.reduce((total, day) => {
-      total += day[metric];
-      return total;
-    }, 0))
-    return usersWeeklyTotals
-  }
+  returnUsersWeeklyTotals(date, metric) {
+  let dataByUser = this.organizeByUser();
+  let usersWeeklyTotals = dataByUser.map(user => [...user].splice((user.findIndex(stat => stat.date === date)- 6), 7)).map(user => user.reduce((total, day) => {
+    total += day[metric];
+    return total;
+  }, 0))
+  return usersWeeklyTotals
+}
 
-  returnWeeksBestSleepQuality(week, metric) {
-    let weekTotals = this.returnUsersWeeklyTotals(week, metric);
+
+  returnWeeksBestSleepQuality(date, metric) {
+    let weekTotals = this.returnUsersWeeklyTotals(date, metric);
     let weekAverages = weekTotals.map(user => Number((user / 7).toFixed(2)));
     let goodSleepers = [];
     weekAverages.forEach((user, index) => {
@@ -43,10 +44,9 @@ class SleepRepo {
     return goodSleepers
   }
 
-  returnWeeklyLongestSleepers(week, metric) {
-    let avgSleepHoursPerUser = this.returnUsersWeeklyTotals(week, metric)
-    console.log('LONGESTSLEEPER', [Math.max(...avgSleepHoursPerUser), avgSleepHoursPerUser.indexOf(Math.max(...avgSleepHoursPerUser)) + 1])
-    return [Number(Math.max(...avgSleepHoursPerUser).toFixed(1)), avgSleepHoursPerUser.indexOf(Math.max(...avgSleepHoursPerUser)) + 1];
+  returnWeeklyLongestSleepers(date, metric) {
+    let totalSleepPerUser = this.returnUsersWeeklyTotals(date, metric)
+    return [Number(Math.max(...totalSleepPerUser).toFixed(1)), totalSleepPerUser.indexOf(Math.max(...totalSleepPerUser)) + 1];
   }
 
 

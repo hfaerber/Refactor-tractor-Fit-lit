@@ -25,7 +25,7 @@ import './images/trophy.svg'
 
 //Generate random user
 const uniqueUserID = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
-
+console.log('uniqueUserID', uniqueUserID);
 //Date
 let today = new Date();
 findTodaysDate();
@@ -100,7 +100,7 @@ fetchData('users/userData')
           data: {
             labels: dropYear(sleep.returnWeekDatesOnly(today)),
             datasets: [{
-              data: sleep.returnWeekOfSleepInfo(1, 'hoursSlept'),
+              data: sleep.returnWeekOfSleepInfo(today, 'hoursSlept'),
               label: "Sleep Hours",
               borderColor: "rgba(92, 117, 218, 0.6)",
               fill: false,
@@ -114,7 +114,7 @@ fetchData('users/userData')
               borderDash: [10, 5]
             },
             {
-              data: sleep.returnWeekOfSleepInfo(1, 'sleepQuality'),
+              data: sleep.returnWeekOfSleepInfo(today, 'sleepQuality'),
               label: "Quality of Sleep",
               borderColor: "rgba(242, 188, 51, 0.6)",
               fill: false,
@@ -170,8 +170,8 @@ fetchData('users/userData')
         });
 
         $('.longest-sleepers').text(`${findUserName(
-          sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[1])}:
-            ${sleepRepo.returnWeeklyLongestSleepers(1, 'hoursSlept')[0]} hours`);
+          sleepRepo.returnWeeklyLongestSleepers(today, 'hoursSlept')[1])}:
+            ${sleepRepo.returnWeeklyLongestSleepers(today, 'hoursSlept')[0]} hours`);
       })
   .catch(error => console.log('sleepData error'));
 
@@ -284,7 +284,7 @@ fetchData('users/userData')
 
     $('.increasing-stairs').html(`${insertStairStreak()}`);
   })
-  .catch(error => console.log('activityData error'));
+  // .catch(error => console.log('activityData error'));
 
 // Fetch hydrationData
   fetchData('hydration/hydrationData')
