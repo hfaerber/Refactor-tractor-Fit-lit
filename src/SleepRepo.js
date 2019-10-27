@@ -44,7 +44,7 @@ class SleepRepo {
   }
 
   returnWeeklyLongestSleeper(week, metric) {
-    let avgSleepHoursPerUser = this.returnUsersWeeklyTotals(week, metric)
+    let avgSleepHoursPerUser = this.returnUsersWeeklyTotals(week, metric);
     return [Math.max(...avgSleepHoursPerUser), avgSleepHoursPerUser.indexOf(Math.max(...avgSleepHoursPerUser)) + 1];
   }
 
