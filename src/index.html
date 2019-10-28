@@ -64,6 +64,50 @@
             <p class="data-text longest-sleeper"></p>
           </section>
         </section>
+        <section class="data-section post-section grid-item draggable" tabindex="2">
+          <h2 class="data-heading">Submit Stats</h2>
+          <div class="post__btn--container">
+            <button class="show__hydration--btn" type="button" name="button">Post Hydration Stats</button>
+            <button class="show__activity--btn" type="button" name="button">Post Activity Stats</button>
+            <button class="show__sleep--btn" type="button" name="button">Post Sleep Stats</button>
+          </div>
+          <section class="data-subsection  post-section">
+            <h3 class="subtext">Input your stats</h3>
+            <form class="sleep-form" action="index.html" method="post">
+              <div class="input-container">
+                <label for="">Hours Slept</label>
+                <input class="hours-slept" type="number" step="any" min="0" name="hours-slept" value="" placeholder="Enter Numerical Data" required>
+              </div>
+              <div class="input-container">
+                <label for="">Sleep Quality</label>
+                <input class="sleep-quality" type="number" step="any" min="0" name="sleep-quality" value="" placeholder="Enter Numerical Data" required>
+              </div>
+              <button class="sleep__submit--btn" type="submit">Submit Data</button>
+            </form>
+            <form class="hydration-form" action="index.html" method="post">
+              <div class="input-container">
+                <label for="">Ounces Drank</label>
+                <input class="num-ounces" type="number" step="any" min="0" name="num-ounces" value="" placeholder="Enter Numerical Data" required>
+              </div>
+              <button class="hydration__submit--btn" type="submit">Submit Data</button>
+            </form>
+            <form class="activity-form" action="index.html" method="post">
+              <div class="input-container">
+                <label for="">Number of Steps</label>
+                <input class="num-steps" type="number" step="any" min="0" name="num-steps" value="" placeholder="Enter Numerical Data" required>
+              </div>
+              <div class="input-container">
+                <label for="">Minutes Active</label>
+                <input class="minutes-active" type="number" step="any" min="0" name="minutes-active" value="" placeholder="Enter Numerical Data" required>
+              </div>
+              <div class="input-container">
+                <label for="">Flights of Stairs</label>
+                <input class="flights-stairs" type="number" step="any" min="0" name="flights-stairs" value="" placeholder="Enter Numerical Data" required>
+              </div>
+              <button class="activity__submit--btn" type="submit">Submit Data</button>
+            </form>
+          </section>
+        </section>
       </div>
       <div class="grid-column3">
         <section class="data-section activity grid-item draggable" tabindex="0">

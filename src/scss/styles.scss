@@ -10,8 +10,9 @@
 body {
   background-color: $body-background-color;
   font-family: 'Open Sans', sans-serif;
-  @include margin(0px, 0px, 0px, 0px);
-  @include padding(10px, 10px, 10px, 10px);
+  margin: 0;
+  min-width: 320px;
+  padding: 10px;
 }
 
 h1 {
@@ -31,22 +32,22 @@ canvas {
 }
 
 .welcome-section {
-  @include margin(0px, 0px, 10px, 0px);
+  margin-bottom: 10px;
   width: 100%;
 }
 
 .date {
   border-radius: 3px;
   float: right;
-  @include margin(5px, 5px, 5px, 5px);
-  @include padding(3px, 5px, 3px, 5px);
+  margin: 5px;
+  padding: 3px 5px;
   @include font-look(2.2em, 600);
 }
 
 .welcome-message {
   border-radius: 3px;
-  @include margin(15px, 3px, 10px, 3px);
-  @include padding(3px, 15px, 3px, 20px);
+  margin: 15px 3px 10px 3px;
+  padding: 3px 15px 3px 45px;
   text-align: left;
   font-size: 2.5em;
   color: #EAEBEF;
@@ -75,7 +76,7 @@ canvas {
   "column1 column2 column3";
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  @include margin(0px, 0px, 0px, 15px);
+  margin-left: 15px;
 }
 
 .grid-column1 {
@@ -93,8 +94,8 @@ canvas {
 .data-section {
   background-color: $data-card-background-color;
   border-radius: 3px;
-  @include margin(5px, 5px, 20px, 5px);
-  @include padding(15px, 15px, 15px, 15px);
+  margin: 5px 5px 20px 5px;
+  padding: 15px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
   width: 93%;
@@ -111,19 +112,19 @@ canvas {
 }
 
 .data-subsection {
-  @include margin(40px, 0px, 40px, 0px);
+  margin: 40px 0px;
   text-align: center;
 }
 
 .data-text {
-  @include margin(15px, 15px, 15px, 15px);
+  margin: 15px;
   @include font-look(1.7em, 600);
   color: $yellow-data-info ;
 }
 
 .subtext {
   @include font-look(2em, 700);
-  @include margin(25px, 5px, 25px, 5px);
+  margin: 25px 5px;
   color: $header-font-color;
 }
 
@@ -143,14 +144,14 @@ canvas {
 }
 
 .number-of-steps-day {
-  @include margin(20px, auto, 50px, auto);
+  margin: 20px auto 50px auto;
   width: 200px;
   @include font-look(.8em, 200);
 }
 
 .avg-number-of-steps-goal,
 .number-of-steps-goal {
-  @include margin(10px, 10px, 10px, 10px);
+  margin: 10px;
   @include font-look(1.2em, 600);
 }
 
@@ -207,7 +208,7 @@ img {
 .border {
   border-right: 2px solid $header-font-color;
   height: 105px;
-  @include margin(5px, 0px, 0px, 0px);
+  margin-top: 5px;
 }
 
 .average {
@@ -216,6 +217,64 @@ img {
 
 p {
   @include font-look(3.5em, 200);
+}
+
+form {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 300px;
+}
+
+.hydration-form {
+  display: none;
+  height: 200px;
+}
+
+.activity-form {
+  display: none;
+}
+
+.post__btn--container {
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+}
+
+.show__hydration--btn,
+.show__activity--btn,
+.show__sleep--btn {
+  height: 100%;
+    &:hover {
+      @include btn-hover(#4C8BE4, 1px solid black, white)
+    }
+}
+
+.activity__submit--btn,
+.hydration__submit--btn,
+.sleep__submit--btn {
+    &:hover {
+      @include btn-hover(#4C8BE4, 1px solid black, white)
+    }
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  justify-content: space-between;
+  text-indent: 3px;
+  text-align: left;
+  width: 100%;
+}
+
+input {
+  height: 30px;
+  width: 90%;
+    &:valid {
+    border: 3px solid green;
+    }
 }
 
 .highest-step-name {

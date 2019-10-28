@@ -3,18 +3,10 @@
   font-weight: $weight;
 }
 
-@mixin margin($top, $right, $bottom, $left) {
-  margin-top: $top;
-  margin-right: $right;
-  margin-bottom: $bottom;
-  margin-left: $left;
-}
-
-@mixin padding($top, $right, $bottom, $left) {
-  padding-top: $top;
-  padding-right: $right;
-  padding-bottom: $bottom;
-  padding-left: $left;
+@mixin btn-hover($background, $border, $text-color) {
+  background-color: $background;
+  border: $border;
+  color: $text-color;
 }
 
 @mixin size-xs {

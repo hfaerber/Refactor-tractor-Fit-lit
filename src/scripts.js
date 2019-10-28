@@ -1,4 +1,3 @@
-
 import $ from 'jquery';
 import Utility from "./Utility";
 import UserRepo from "./UserRepo";
@@ -8,10 +7,8 @@ import Sleep from "./Sleep";
 import SleepRepo from "./SleepRepo";
 import Activity from "./Activity";
 import ActivityRepo from "./ActivityRepo";
-
 import './scss/_normalize.scss';
 import './scss/styles.scss';
-
 import './images/appointment.svg'
 import './images/drop.svg'
 import './images/footsteps-silhouette-variant.svg'
@@ -60,7 +57,6 @@ function dropYear(dates) {
   })
   return reformattedDates
 }
-
 //Date Section
 $('.date').text(`${formattedDate}`);
 
@@ -77,10 +73,12 @@ fetchData('users/userData')
   .then(userData => {
     const userRepo = new UserRepo(userData.userData);
     const user = new User(userRepo.returnUserData(uniqueUserID));
+
     // Function to find user name
     function findUserName(id) {
       return userData.userData.find(user => user.id === id).name;
     }
+
     //User Section
     $('.username').text(`${user.returnUserName()}`)
 
@@ -89,6 +87,7 @@ fetchData('users/userData')
       .then(sleepData => {
         const sleepRepo = new SleepRepo(sleepData.sleepData);
         const sleep = new Sleep(sleepData.sleepData, user.id);
+
         //Sleep
         $('.hours-slept-day').text(`${sleep.returnIndividualStatForDate(today,
           'hoursSlept')} hours | ${sleep.returnIndividualStatForDate(today,
@@ -106,6 +105,7 @@ fetchData('users/userData')
               fill: false,
               lineTension: 0.1
             },
+
             {
               data: Array(7).fill(sleep.returnAvgUserStatForWeek(today, 'hoursSlept')),
               label: "Average Hours of Sleep",
@@ -149,7 +149,6 @@ fetchData('users/userData')
                   display: true,
                   labelString: 'hours'
                 },
-
               }, {
                 id: 'Quality of Sleep',
                 type: 'linear',
@@ -174,16 +173,16 @@ fetchData('users/userData')
             ${sleepRepo.returnWeeklyLongestSleeper(today, 'hoursSlept')[0]} hours`);
 
       })
+
   .catch(error => console.log('sleepData error'));
 
-// Fetch activityData
+  // Fetch activityData
   fetchData('activity/activityData')
   .then(activityData => {
     const activityRepo = new ActivityRepo(activityData.activityData, userData.userData);
     const activity = new Activity(activityData.activityData, user.id, user);
 
   //Activity Section
-
   var bar = new ProgressBar.Circle('.number-of-steps-day', {
     color: '#aaa',
     svgStyle: {
@@ -205,24 +204,20 @@ fetchData('users/userData')
       color: '#f2bc33',
       width: 5
     },
-
     step(state, circle) {
       circle.path.setAttribute('stroke', state.color);
       circle.path.setAttribute('stroke-width', state.width);
-
       var value = circle.value();
       if (value === 0) {
         circle.setText('');
       } else {
         circle.setText(`${activity.returnIndividualStatForDate(today, 'numSteps')} steps`);
       }
-
     }
   });
 
     let percentSteps = activity.returnIndividualStatForDate(today, 'numSteps') / user.dailyStepGoal;
     bar.animate(percentSteps > 1 ? percentSteps = 1 : percentSteps); // Number from 0.0 to 1.0
-
     $('.number-of-steps-goal').text(`Step Goal: ${user.dailyStepGoal}`);
     $('.avg-number-of-steps-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
     $('.number-of-minutes-active-day').text(`${activity.returnIndividualStatForDate(today, 'minutesActive')}`);
@@ -239,7 +234,6 @@ fetchData('users/userData')
 
     // Friends
     let userIDs = Object.keys(activity.returnFriendsStepCount()[0]);
-
     function insertFriendSteps() {
       let list = `<ul class="friends_ul">`
       let highestStepCountUserId = Number(activity.returnFriendsStepCount()[1]);
@@ -250,7 +244,6 @@ fetchData('users/userData')
                <p class="friends--steps">${userName}:</p>
                <p class="friends-steps-number">${activity.returnFriendsStepCount()[0][userID]} steps</p>`;
       });
-
       list += `<li class="friends_li">
               <p class="friends--steps"><b>Highest step count:</b><span class="italic-name highest-step-name">
               ${highestStepCountUserName}</span></p>`;
@@ -285,15 +278,15 @@ fetchData('users/userData')
 
     $('.increasing-stairs').html(`${insertStairStreak()}`);
   })
-  // .catch(error => console.log('activityData error'));
+  .catch(error => console.log('activityData error'));
 
 // Fetch hydrationData
   fetchData('hydration/hydrationData')
   .then(hydrationData => {
     const hydration = new Hydration(hydrationData.hydrationData, user.id);
+
     //Hydration
     $('.water-consumed').text(`${hydration.returnIndividualStatForDate(today, "numOunces")} ounces \n\n`);
-
     const weeklyOuncesChart = new Chart(document.getElementById('water-consumed-week').getContext('2d'), {
       type: 'horizontalBar',
       data: {
@@ -330,7 +323,97 @@ fetchData('users/userData')
     });
   })
   .catch(error => console.log('hydrationData error'));
-
 })
+
 .catch(error => console.log('userData error'));
 // *****END OF .THEN FOR USERDATA**************************
+
+// Event listeners for show post-data form buttons
+$('.show__activity--btn').on('click', function() {
+  $('.activity-form').toggle();
+  $('.hydration-form').hide();
+  $('.sleep-form').hide()
+});
+
+$('.show__hydration--btn').on('click', function() {
+  $('.hydration-form').toggle();
+  $('.activity-form').hide();
+  $('.sleep-form').hide()
+});
+
+$('.show__sleep--btn').on('click', function() {
+  $('.sleep-form').toggle();
+  $('.hydration-form').hide();
+  $('.activity-form').hide()
+});
+
+// Event Listeners for submit post-data buttons
+$('.sleep__submit--btn').on('click', postSleep);
+$('.activity__submit--btn').on('click', postActivity);
+$('.hydration__submit--btn').on('click', postHydration);
+
+function postSleep(event) {
+  event.preventDefault();
+  console.log('got into sleep!');
+  const sleepBody =
+    {
+      userID: uniqueUserID,
+      date: today,
+      hoursSlept: $('.hours-slept').val(),
+      sleepQuality: $('.sleep-quality').val()
+    }
+
+  if ($('.hours-slept').length > 0 && $('.sleep-quality').length > 0) {
+    fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData', {
+      method: 'POST',
+      headers: {
+        'Content-Type': "application/json"
+      },
+      body: JSON.stringify(sleepBody)
+    })
+  }
+};
+
+function postActivity(event) {
+  event.preventDefault();
+  console.log('made it into activity!');
+  const activityBody =
+    {
+      userID: uniqueUserID,
+      date: today,
+      numSteps: $('.num-steps').val(),
+      minutesActive: $('.minutes-active').val(),
+      flightsOfStairs: $('.flights-stairs').val()
+    }
+
+  if ($('.num-steps').length > 0 && $('.minutes-active').length > 0 && $('.flights-stairs').length > 0) {
+    fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData', {
+      method: 'POST',
+      headers: {
+          'Content-Type': "application/json"
+        },
+      body: JSON.stringify(activityBody)
+    })
+  }
+};
+
+function postHydration(event) {
+  event.preventDefault();
+  console.log('and looky here, we got into hydration too!');
+  const hydrationBody =
+    {
+      userID: uniqueUserID,
+      date: today,
+      numOunces: $('.num-ounces').val()
+    };
+
+  if ($('.num-ounces').length > 0) {
+    fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData', {
+      method: 'POST',
+      headers: {
+          'Content-Type': "application/json"
+        },
+      body: JSON.stringify(hydrationBody)
+    })
+  }
+}
