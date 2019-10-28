@@ -367,7 +367,7 @@ p {
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 2000px) {
   h1 {
     @include font-look(6em, 300);
   }
