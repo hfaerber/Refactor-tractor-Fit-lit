@@ -11,14 +11,14 @@ body {
   background-color: $body-background-color;
   font-family: 'Open Sans', sans-serif;
   @include margin(0px, 0px, 0px, 0px);
-  min-width: 320px;
   @include padding(10px, 10px, 10px, 10px);
 }
 
 h1 {
-  @include font-look(6em, 300);
-  color: $header-font-color;
-  letter-spacing: .9px
+  @include font-look(3em, 700);
+  color: #EAEBEF;
+  margin-top: 0;
+  text-align: center;
 }
 
 .username {
@@ -32,29 +32,43 @@ canvas {
 
 .welcome-section {
   @include margin(0px, 0px, 10px, 0px);
-  padding-right: 85px;
+  width: 100%;
 }
 
 .date {
-  background-color: $header-font-color;
   border-radius: 3px;
   float: right;
   @include margin(5px, 5px, 5px, 5px);
   @include padding(3px, 5px, 3px, 5px);
-  color: $body-background-color;
-  @include font-look(3em, 600);
+  @include font-look(2.2em, 600);
 }
 
 .welcome-message {
   border-radius: 3px;
   @include margin(15px, 3px, 10px, 3px);
-  @include padding(3px, 15px, 3px, 45px);
+  @include padding(3px, 15px, 3px, 20px);
   text-align: left;
+  font-size: 2.5em;
+  color: #EAEBEF;
+}
+
+.italic-name {
+  margin-left: 10px;
+  font-style: italic;
+}
+
+.name-date-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: baseline;
+  color: #EAEBEF;
 }
 
 .grid {
   display: grid;
   height: 120vh;
+  width: 100vw;
   grid-template-areas:
   "column1 column2 column3"
   "column1 column2 column3"
@@ -90,8 +104,8 @@ canvas {
 }
 
 .data-heading {
-  @include margin(5px, 0px, 15px, 10px);
-  @include font-look(6em, 200);
+  margin-top: 0;
+  @include font-look(2.5em, 200);
   color: $header-font-color;
   letter-spacing: 1px;
 }
@@ -103,31 +117,66 @@ canvas {
 
 .data-text {
   @include margin(15px, 15px, 15px, 15px);
-  @include font-look(3.5em, 300);
+  @include font-look(1.7em, 600);
+  color: $yellow-data-info ;
 }
 
 .subtext {
-  @include font-look(3em, 700);
+  @include font-look(2em, 700);
   @include margin(25px, 5px, 25px, 5px);
   color: $header-font-color;
 }
 
-.number-of-steps-day {
-  @include margin(20px, auto, 50px, auto);
-  width: 280px;
-  @include font-look(1.2em, 200);
+.dates,
+.friends-steps-number {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: $yellow-data-info;
 }
 
+.friends--steps {
+  margin-bottom: 0;
+}
+
+.secondary-heading {
+  font-size: 1.5em;
+}
+
+.number-of-steps-day {
+  @include margin(20px, auto, 50px, auto);
+  width: 200px;
+  @include font-look(.8em, 200);
+}
+
+.avg-number-of-steps-goal,
 .number-of-steps-goal {
   @include margin(10px, 10px, 10px, 10px);
+  @include font-look(1.2em, 600);
+}
+
+.friends--steps,
+.streak-heading,
+.user-average {
+  @include font-look(1.7em, 600);
 }
 
 .streak-heading {
-  @include font-look(3.5em, 700);
+  margin-bottom: -30px;
+}
+
+.steps_ul,
+.stairs_ul,
+.friends_ul {
+  margin: 0;
+  padding-left: 0;
 }
 
 .user-average {
-  @include font-look(3em, 700);
+  margin: 0;
+}
+
+.activity-labels {
+  @include font-look(1.2em, 400);
 }
 
 ul {
@@ -144,7 +193,7 @@ img {
 
 .img-medium {
   opacity: 0.6;
-  width: 180px;
+  width: 130px;
 }
 
 .separator {
@@ -157,8 +206,8 @@ img {
 
 .border {
   border-right: 2px solid $header-font-color;
-  height: 100px;
-  @include margin(15px, 0px, 0px, 0px);
+  height: 105px;
+  @include margin(5px, 0px, 0px, 0px);
 }
 
 .average {
@@ -167,6 +216,10 @@ img {
 
 p {
   @include font-look(3.5em, 200);
+}
+
+.highest-step-name {
+  color: $yellow-data-info;
 }
 
 @media screen and (max-width: 600px) {
@@ -184,10 +237,6 @@ p {
     margin: 0;
     padding: 0;
   }
-
-  .fitlit-logo {
-    width: 38%;
-  }
   
   .name-date-wrapper {
     display: flex;
@@ -198,8 +247,7 @@ p {
     width: 65%;
     height: 30px;
     font-size: .8em;
-    color: $header-font-color;
-    background-color: $body-background-color;
+    color: #fff;
     float: left; 
     margin-bottom: 0;
   }
@@ -223,10 +271,6 @@ p {
   .data-section {
     margin-left: 0;
     padding: 10px;
-    width: 90%;
-  }
-
-  .data-section {
     width: 98%;
   }
   
@@ -239,14 +283,6 @@ p {
     width: 22%;
   }
 
-  .friends--steps {
-    font-size: 1.5em;
-  }
-
-  .dates {
-    font-size: 1em;
-  }
-
   .user-average,
   .hours-slept-day,
   .subtext {
@@ -255,7 +291,7 @@ p {
 
   .subtext {
     margin-bottom: 0;
-    font-size: 160%
+    font-size: 160%;
   }
 
   .user-average {
@@ -317,6 +353,8 @@ p {
 
   .friends-steps-number {
     font-size: 1em;
+    margin-top: 0;
+    padding-top: 0;
   }
 
   .secondary-heading {
@@ -324,6 +362,7 @@ p {
   }
 
   .data-text {
-    font-size: 1em;
+    @include font-look(1.3em, 600);
+    color: $yellow-data-info;
   }
 }
