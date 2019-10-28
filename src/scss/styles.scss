@@ -112,7 +112,7 @@ canvas {
   letter-spacing: 1px;
 }
 
-.data-article {
+.data-subsection {
   margin: 40px, 0px:
   text-align: center;
 }
@@ -423,5 +423,48 @@ input {
   .data-text {
     @include font-look(1.3em, 600);
     color: $yellow-data-info;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  h1 {
+    @include font-look(6em, 300);
+  }
+
+  .username {
+    @include font-look(1em, 600);
+  }
+
+  .date {
+    @include font-look(3em, 600);
+  }
+
+  .data-heading {
+    @include font-look(6em, 200);
+  }
+
+  .data-text {
+    @include font-look(3.5em, 300);
+  }
+
+  .subtext,
+  .user-average {
+    @include font-look(3em, 700);
+  }
+
+  .number-of-steps-day {
+    @include font-look(1.2em, 200);
+  }
+
+  .streak-heading {
+    @include font-look(3.5em, 700);
+  }
+
+  .date_li {
+    @include font-look(.3em, 200);
+  }
+
+  p {
+    @include font-look(3.5em, 200);
   }
 }

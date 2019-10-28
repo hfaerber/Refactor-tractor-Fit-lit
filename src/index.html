@@ -1,201 +1,197 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-  <title>Activity Tracker</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.7.0/dist/progressbar.js"></script>
-</head>
-
-<body>
-  <section class="welcome-section">
+<html lang="en">
+  <head>
+    <title>Activity Tracker</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.7.0/dist/progressbar.js"></script>
+  </head>
+  <body>
+    <header class="welcome-section">
       <h1 class="fitlit-logo">FitLit</h1>
       <div class="name-date-wrapper">
       <h2 class="date"></h2>
-    <h2 class="welcome-message">Welcome<span class="username italic-name"></span></h2>
-  </div>
-  </section>
-  <div class="grid">
-    <div class="grid-column1">
-      <section class="data-section hydration grid-item draggable" tabindex="1">
-        <h2 class="data-heading">Hydration</h2>
-        <article class="data-article water-consumed-article">
-          <img class="img-medium" src="../images/drop.svg" alt="water droplet">
-          <h3 class="subtext">TODAY</h3>
-          <p class="data-text water-consumed"></p>
-        </article>
-        <article class="data-article water-consumed-week">
-          <canvas id="water-consumed-week"
-            alt="A bar chart that displays the number of ounces of water the user consumed daily, over the course of a week."></canvas>
-        </article>
-      </section>
-      <section class="data-section challenges grid-item draggable" tabindex="5">
-        <h2 class="data-heading">Challenges</h2>
-        <article class="increasing-steps-article">
-          <h3 class="streak-heading">3 Day Step Streak</h3>
-          <p class="increasing-steps"></p>
-        </article>
-        <article class="increasing-stairs-article">
-          <h3 class="streak-heading">2 Day Stair Streak</h3>
-          <p class="increasing-stairs"></p>
-        </article>
-      </section>
-      <section class="data-section friends grid-item draggable" tabindex="4">
-        <h2 class="data-heading">Friends</h2>
-        <article class="friends-step"></article>
-      </section>
-    </div>
-    <div class="grid-column2">
-      <section class="data-section sleep grid-item draggable" tabindex="2">
-        <h2 class="data-heading">Sleep</h2>
-        <article class="data-article hours-slept-day-article">
-          <img class="img-medium" src="../images/moon.svg" alt="moon with stars">
-          <h3 class="subtext">LAST NIGHT</h3>
-          <p class="data-text hours-slept-day"></p>
-          <p class="data-text quality-sleep-day"></p>
-        </article>
-        <article class="data-article sleep-week">
-          <canvas id="sleep-week"
-            alt="A line chart that displays the number of hours slept each day of the week and the quality of sleep each night."></canvas>
-        </article>
-        <article class="data-article longest-sleeper-article">
-          <img class="img-medium" src="../images/trophy.svg" alt="trophy for a winner">
-          <h3 class="subtext secondary-heading">USER WITH MOST SLEEP THIS WEEK</h3>
-          <p class="data-text longest-sleeper"></p>
-        </article>
-      </section>
-      <section class="data-section post-section grid-item draggable" tabindex="2">
-        <h2 class="data-heading">Submit Stats</h2>
-        <div class="post__btn--container">
-          <button class="show__hydration--btn" type="button" name="button">Post Hydration Stats</button>
-          <button class="show__activity--btn" type="button" name="button">Post Activity Stats</button>
-          <button class="show__sleep--btn" type="button" name="button">Post Sleep Stats</button>
-        </div>
-        <article class="data-article post-article">
-          <h3 class="subtext">Input your stats</h3>
-          <form class="sleep-form" action="index.html" method="post">
-            <div class="input-container">
-              <label for="">Hours Slept</label>
-              <input class="hours-slept" type="number" step="any" min="0" name="" value="" placeholder="Enter Numerical Data" required>
-            </div>
-            <div class="input-container">
-              <label for="">Sleep Quality</label>
-              <input class="sleep-quality" type="number" step="any" min="0" name="" value="" placeholder="Enter Numerical Data" required>
-            </div>
-            <button class="sleep__submit--btn" type="submit">Submit Data</button>
-          </form>
-          <form class="hydration-form" action="index.html" method="post">
-            <div class="input-container">
-              <label for="">Ounces Drank</label>
-              <input class="num-ounces" type="number" step="any" min="0" name="" value="" placeholder="Enter Numerical Data" required>
-            </div>
-            <button class="hydration__submit--btn" type="submit">Submit Data</button>
-          </form>
-          <form class="activity-form" action="index.html" method="post">
-            <div class="input-container">
-              <label for="">Number of Steps</label>
-              <input class="num-steps" type="number" step="any" min="0" name="" value="" placeholder="Enter Numerical Data" required>
-            </div>
-            <div class="input-container">
-              <label for="">Minutes Active</label>
-              <input class="minutes-active" type="number" step="any" min="0" name="" value="" placeholder="Enter Numerical Data" required>
-            </div>
-            <div class="input-container">
-              <label for="">Flights of Stairs</label>
-              <input class="flights-stairs" type="number" step="any" min="0" name="" value="" placeholder="Enter Numerical Data" required>
-            </div>
-            <button class="activity__submit--btn" type="submit">Submit Data</button>
-          </form>
-        </article>
-      </section>
-    </div>
-    <div class="grid-column3">
-      <section class="data-section activity grid-item draggable" tabindex="3">
-        <h2 class="data-heading">Activity</h2>
-        <article class="data-article user-step-goal"></article>
-        <article class="data-article average-step-goal"></article>
-        <article class="data-article number-of-steps-day-article">
-          <p class="number-of-steps-day"></p>
-        </article>
-        <article class="data-article number-of-minutes-active-day-article">
-          <img class="img-medium" src="../images/stopwatch.svg" alt="road">
-          <h3 class="subtext">TODAY</h3>
-          <div class="separator">
-            <div class="user">
-              <h4 class="user-average">User</h4>
-              <p class="data-text number-of-minutes-active-day"></p>
-              <label class="activity-labels">Min. Active</label>
-            </div>
-            <div class="border"></div>
-            <div class="average">
-              <h4 class="user-average">Average</h4>
-              <p class="data-text average-minutes-active"></p>
-              <label class="activity-labels">Min. Active</label>
-            </div>
+      <h2 class="welcome-message">Welcome<span class="username italic-name"></span></h2>
+      </div>
+    </header>
+    <div class="grid">
+      <div class="grid-column1">
+        <section class="data-section hydration grid-item draggable" tabindex="0">
+          <h2 class="data-heading">Hydration</h2>
+          <section class="data-subsection">
+            <img class="img-medium" src="../images/drop.svg" alt="water droplet">
+            <h3 class="subtext">TODAY</h3>
+            <p class="data-text water-consumed"></p>
+          </section>
+          <section class="data-subsection water-consumed-week">
+            <canvas id="water-consumed-week"
+              alt="A bar chart that displays the number of ounces of water the user consumed daily, over the course of a week."></canvas>
+          </section>
+        </section>
+        <section class="data-section challenges grid-item draggable" tabindex="0">
+          <h2 class="data-heading">Challenges</h2>
+          <section>
+            <h3 class="streak-heading">3 Day Step Streak</h3>
+            <p class="increasing-steps"></p>
+          </section>
+          <section>
+            <h3 class="streak-heading">2 Day Stair Streak</h3>
+            <p class="increasing-stairs"></p>
+          </section>
+        </section>
+        <section class="data-section friends grid-item draggable" tabindex="0">
+          <h2 class="data-heading">Friends</h2>
+          <section class="friends-step"></section>
+        </section>
+      </div>
+      <div class="grid-column2">
+        <section class="data-section sleep grid-item draggable" tabindex="0">
+          <h2 class="data-heading">Sleep</h2>
+          <section class="data-subsection">
+            <img class="img-medium" src="../images/moon.svg" alt="moon with stars">
+            <h3 class="subtext">LAST NIGHT</h3>
+            <p class="data-text hours-slept-day"></p>
+            <p class="data-text quality-sleep-day"></p>
+          </section>
+          <section class="data-subsection sleep-week">
+            <canvas id="sleep-week"
+              alt="A line chart that displays the number of hours slept each day of the week and the quality of sleep each night."></canvas>
+          </section>
+          <section class="data-subsection">
+            <img class="img-medium" src="../images/trophy.svg" alt="trophy for a winner">
+            <h3 class="subtext secondary-heading">USER WITH MOST SLEEP THIS WEEK</h3>
+            <p class="data-text longest-sleeper"></p>
+          </section>
+        </section>
+        <section class="data-section post-section grid-item draggable" tabindex="2">
+          <h2 class="data-heading">Submit Stats</h2>
+          <div class="post__btn--container">
+            <button class="show__hydration--btn" type="button" name="button">Post Hydration Stats</button>
+            <button class="show__activity--btn" type="button" name="button">Post Activity Stats</button>
+            <button class="show__sleep--btn" type="button" name="button">Post Sleep Stats</button>
           </div>
-        </article>
-        <article class="data-article distance-comparison">
-          <img class="img-medium" src="../images/footsteps-silhouette-variant.svg" alt="road">
-          <h3 class="subtext">TODAY</h3>
-          <div class="separator">
-            <div class="user">
-              <h4 class="user-average">User</h4>
-              <p class="data-text distance"></p>
-              <label class="activity-labels">Steps Taken</label>
-              <h3 class="subtext number-of-steps-goal"></h3>
+          <section class="data-subsection  post-section">
+            <h3 class="subtext">Input your stats</h3>
+            <form class="sleep-form" action="index.html" method="post">
+              <div class="input-container">
+                <label for="">Hours Slept</label>
+                <input class="hours-slept" type="number" step="any" min="0" name="" value="" placeholder="Enter Numerical Data" required>
+              </div>
+              <div class="input-container">
+                <label for="">Sleep Quality</label>
+                <input class="sleep-quality" type="number" step="any" min="0" name="" value="" placeholder="Enter Numerical Data" required>
+              </div>
+              <button class="sleep__submit--btn" type="submit">Submit Data</button>
+            </form>
+            <form class="hydration-form" action="index.html" method="post">
+              <div class="input-container">
+                <label for="">Ounces Drank</label>
+                <input class="num-ounces" type="number" step="any" min="0" name="" value="" placeholder="Enter Numerical Data" required>
+              </div>
+              <button class="hydration__submit--btn" type="submit">Submit Data</button>
+            </form>
+            <form class="activity-form" action="index.html" method="post">
+              <div class="input-container">
+                <label for="">Number of Steps</label>
+                <input class="num-steps" type="number" step="any" min="0" name="" value="" placeholder="Enter Numerical Data" required>
+              </div>
+              <div class="input-container">
+                <label for="">Minutes Active</label>
+                <input class="minutes-active" type="number" step="any" min="0" name="" value="" placeholder="Enter Numerical Data" required>
+              </div>
+              <div class="input-container">
+                <label for="">Flights of Stairs</label>
+                <input class="flights-stairs" type="number" step="any" min="0" name="" value="" placeholder="Enter Numerical Data" required>
+              </div>
+              <button class="activity__submit--btn" type="submit">Submit Data</button>
+            </form>
+          </section>
+        </section>
+      </div>
+      <div class="grid-column3">
+        <section class="data-section activity grid-item draggable" tabindex="0">
+          <h2 class="data-heading">Activity</h2>
+          <section class="data-subsection user-step-goal"></section>
+          <section class="data-subsection average-step-goal"></section>
+          <section class="data-subsection">
+            <p class="number-of-steps-day"></p>
+          </section>
+          <section class="data-subsection">
+            <img class="img-medium" src="../images/stopwatch.svg" alt="road">
+            <h3 class="subtext">TODAY</h3>
+            <div class="separator">
+              <div class="user">
+                <h4 class="user-average">User</h4>
+                <p class="data-text number-of-minutes-active-day"></p>
+                <label class="activity-labels">Min. Active</label>
+              </div>
+              <div class="border"></div>
+              <div class="average">
+                <h4 class="user-average">Average</h4>
+                <p class="data-text average-minutes-active"></p>
+                <label class="activity-labels">Min. Active</label>
+              </div>
             </div>
-            <div class="border"></div>
-            <div class="average">
-              <h4 class="user-average">Average</h4>
-              <p class="data-text average-distance"></p>
-              <label class="activity-labels">Steps Taken</label>
-              <h3 class="subtext avg-number-of-steps-goal"></h3>
+          </section>
+          <section class="data-subsection distance-comparison">
+            <img class="img-medium"   src="../images/footsteps-silhouette-variant.svg" alt="road">
+            <h3 class="subtext">TODAY</h3>
+            <div class="separator">
+              <div class="user">
+                <h4 class="user-average">User</h4>
+                <p class="data-text distance"></p>
+                <label class="activity-labels">Steps Taken</label>
+                <h3 class="subtext number-of-steps-goal"></h3>
+              </div>
+              <div class="border"></div>
+              <div class="average">
+                <h4 class="user-average">Average</h4>
+                <p class="data-text average-distance"></p>
+                <label class="activity-labels">Steps Taken</label>
+                <h3 class="subtext avg-number-of-steps-goal"></h3>
+              </div>
             </div>
-          </div>
-        </article>
-        <article class="data-article stairs-comparison">
-          <img class="img-medium" src="../images/goal.svg" alt="road">
-          <h3 class="subtext">TODAY</h3>
-          <div class="separator">
-            <div class="user">
-              <h4 class="user-average">User</h4>
-              <p class="data-text stairs"></p>
-              <label class="activity-labels">Stairs Climbed</label>
+          </section>
+          <section class="data-subsection stairs-comparison">
+            <img class="img-medium" src="../images/goal.svg" alt="road">
+            <h3 class="subtext">TODAY</h3>
+            <div class="separator">
+              <div class="user">
+                <h4 class="user-average">User</h4>
+                <p class="data-text stairs"></p>
+                <label class="activity-labels">Stairs Climbed</label>
+              </div>
+              <div class="border"></div>
+              <div class="average">
+                <h4 class="user-average">Average</h4>
+                <p class="data-text average-stairs"></p>
+                <label class="activity-labels">Stairs Climbed</label>
+              </div>
             </div>
-            <div class="border"></div>
-            <div class="average">
-              <h4 class="user-average">Average</h4>
-              <p class="data-text average-stairs"></p>
-              <label class="activity-labels">Stairs Climbed</label>
-            </div>
-          </div>
-        </article>
-        <article class="data-article distance-in-miles-article">
-          <img class="img-medium" src="../images/road.svg" alt="road">
-          <h3 class="subtext">TODAY</h3>
-          <p class="data-text distance-in-miles"></p>
-        </article>
-        <article class="data-article week-review-article">
-          <img class="img-medium" src="../images/appointment.svg"
-            alt="Calendar to signify a week of exercise completed.">
-          <h3 class="subtext secondary-heading">YOUR WEEK IN REVIEW</h3>
-          <p class="data-text week-review-minutes"></p>
-          <p class="data-text week-review-steps"></p>
-          <p class="data-text week-review-stairs"></p>
-        </article>
-        <article class="data-article most-active-article">
-          <img class="img-medium" src="../images/trophy.svg" alt="trophy for a winner">
-          <h3 class="subtext secondary-heading">USER MOST ACTIVE THIS WEEK</h3>
-          <p class="data-text most-active"></p>
-        </article>
-      </section>
+          </section>
+          <section class="data-subsection">
+            <img class="img-medium" src="../images/road.svg" alt="road">
+            <h3 class="subtext">TODAY</h3>
+            <p class="data-text distance-in-miles"></p>
+          </section>
+          <section class="data-subsection">
+            <img class="img-medium" src="../images/appointment.svg"
+              alt="Calendar to signify a week of exercise completed.">
+            <h3 class="subtext secondary-heading">YOUR WEEK IN REVIEW</h3>
+            <p class="data-text week-review-minutes"></p>
+            <p class="data-text week-review-steps"></p>
+            <p class="data-text week-review-stairs"></p>
+          </section>
+          <section class="data-subsection">
+            <img class="img-medium" src="../images/trophy.svg" alt="trophy for a winner">
+            <h3 class="subtext secondary-heading">USER MOST ACTIVE THIS WEEK</h3>
+            <p class="data-text most-active"></p>
+          </section>
+        </section>
+      </div>
     </div>
-  </div>
-
-  <script src="https://unpkg.com/packery@2.1/dist/packery.pkgd.min.js"></script>
-  <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
-</body>
-
+    <script src="https://unpkg.com/packery@2.1/dist/packery.pkgd.min.js"></script>
+    <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
+  </body>
 </html>

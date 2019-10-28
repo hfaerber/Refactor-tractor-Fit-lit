@@ -5,8 +5,8 @@ class Sleep extends Utility {
     super(dataSet, userID);
   }
 
-  returnWeekOfSleepInfo(week, metric) {
-    return this.returnWeekOfStatsForUser(week, this.singleUserData).map(day =>
+  returnWeekOfSleepInfo(date, metric) {
+    return this.returnWeekOfStatsForUser(date, this.singleUserData).map(day =>
       day[metric]);
   }
 }
