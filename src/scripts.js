@@ -25,7 +25,7 @@ import './images/trophy.svg'
 
 //Generate random user
 const uniqueUserID = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
-
+console.log('uniqueUserID', uniqueUserID);
 //Date
 let today = new Date();
 findTodaysDate();
@@ -98,30 +98,30 @@ fetchData('users/userData')
           .getContext('2d'), {
           type: 'line',
           data: {
-            labels: dropYear(sleep.returnWeekDatesOnly(1)),
+            labels: dropYear(sleep.returnWeekDatesOnly(today)),
             datasets: [{
-              data: sleep.returnWeekOfSleepInfo(1, 'hoursSlept'),
+              data: sleep.returnWeekOfSleepInfo(today, 'hoursSlept'),
               label: "Sleep Hours",
               borderColor: "rgba(92, 117, 218, 0.6)",
               fill: false,
               lineTension: 0.1
             },
             {
-              data: Array(7).fill(sleep.returnAvgUserStatForWeek(1, 'hoursSlept')),
+              data: Array(7).fill(sleep.returnAvgUserStatForWeek(today, 'hoursSlept')),
               label: "Average Hours of Sleep",
               borderColor: "rgba(92, 117, 218, 0.6)",
               fill: false,
               borderDash: [10, 5]
             },
             {
-              data: sleep.returnWeekOfSleepInfo(1, 'sleepQuality'),
+              data: sleep.returnWeekOfSleepInfo(today, 'sleepQuality'),
               label: "Quality of Sleep",
               borderColor: "rgba(242, 188, 51, 0.6)",
               fill: false,
               lineTension: 0.1
             },
             {
-              data: Array(7).fill(sleep.returnAvgUserStatForWeek(1, 'sleepQuality')),
+              data: Array(7).fill(sleep.returnAvgUserStatForWeek(today, 'sleepQuality')),
               label: "Average Quality of Sleep",
               borderColor: "rgba(242, 188, 51, 0.6)",
               fill: false,
@@ -170,8 +170,9 @@ fetchData('users/userData')
         });
 
         $('.longest-sleeper').text(`${findUserName(
-          sleepRepo.returnWeeklyLongestSleeper(1, 'hoursSlept')[1])}:
-            ${sleepRepo.returnWeeklyLongestSleeper(1, 'hoursSlept')[0].toFixed()} hours`);
+          sleepRepo.returnWeeklyLongestSleeper(today, 'hoursSlept')[1])}:
+            ${sleepRepo.returnWeeklyLongestSleeper(today, 'hoursSlept')[0]} hours`);
+
       })
   .catch(error => console.log('sleepData error'));
 
@@ -232,9 +233,9 @@ fetchData('users/userData')
     $('.average-stairs').text(`${activityRepo.returnAverage(today, 'flightsOfStairs')}`)
     $('.distance-in-miles').text(`${activity.returnMilesWalked(today)} Miles`);
     $('.most-active').text(`${activityRepo.returnMostActive('minutesActive')[0]}: ${activityRepo.returnMostActive('minutesActive')[1]} minutes`);
-    $('.week-review-minutes').text(`${activity.returnAvgUserStatForWeek(1, 'minutesActive')} minutes active`);
-    $('.week-review-steps').text(`${activity.returnAvgUserStatForWeek(1, 'numSteps')} steps taken`);
-    $('.week-review-stairs').text(`${activity.returnAvgUserStatForWeek(1, 'flightsOfStairs')} flights of stairs`);
+    $('.week-review-minutes').text(`${activity.returnAvgUserStatForWeek(today, 'minutesActive')} minutes active`);
+    $('.week-review-steps').text(`${activity.returnAvgUserStatForWeek(today, 'numSteps')} steps taken`);
+    $('.week-review-stairs').text(`${activity.returnAvgUserStatForWeek(today, 'flightsOfStairs')} flights of stairs`);
 
     // Friends
     let userIDs = Object.keys(activity.returnFriendsStepCount()[0]);
@@ -284,7 +285,7 @@ fetchData('users/userData')
 
     $('.increasing-stairs').html(`${insertStairStreak()}`);
   })
-  .catch(error => console.log('activityData error'));
+  // .catch(error => console.log('activityData error'));
 
 // Fetch hydrationData
   fetchData('hydration/hydrationData')
@@ -296,7 +297,7 @@ fetchData('users/userData')
     const weeklyOuncesChart = new Chart(document.getElementById('water-consumed-week').getContext('2d'), {
       type: 'horizontalBar',
       data: {
-        labels: dropYear(hydration.returnWeekDatesOnly(1)),
+        labels: dropYear(hydration.returnWeekDatesOnly(today)),
         datasets: [{
           data: hydration.returnWeeklyNumOunces(),
           backgroundColor: [
