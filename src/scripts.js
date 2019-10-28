@@ -371,12 +371,9 @@ $('.show__sleep--btn').on('click', function() {
 //       .then(response => response.json())
       // .then(data => console.log(data))
       // .catch(error => console.log('error'))
-    }
-};
+//     }
+// };
 
-// A 422 status code occurs when a request is well-formed, however, due to semantic errors it is unable to be processed.
-
-//
 // function postActivity() {
 //   const activityBody =
 //     {
