@@ -169,9 +169,10 @@ fetchData('users/userData')
           }
         });
 
-        $('.longest-sleepers').text(`${findUserName(
-          sleepRepo.returnWeeklyLongestSleepers(today, 'hoursSlept')[1])}:
-            ${sleepRepo.returnWeeklyLongestSleepers(today, 'hoursSlept')[0]} hours`);
+        $('.longest-sleeper').text(`${findUserName(
+          sleepRepo.returnWeeklyLongestSleeper(today, 'hoursSlept')[1])}:
+            ${sleepRepo.returnWeeklyLongestSleeper(today, 'hoursSlept')[0]} hours`);
+
       })
   .catch(error => console.log('sleepData error'));
 
@@ -246,13 +247,13 @@ fetchData('users/userData')
       userIDs.forEach(userID => {
         let userName = findUserName(Number(userID));
         list += `<li class="friends_li">
-               <p class="friends--steps"><b>${userName}</b>:</p>
-               <p>${activity.returnFriendsStepCount()[0][userID]} steps</p>`;
+               <p class="friends--steps">${userName}:</p>
+               <p class="friends-steps-number">${activity.returnFriendsStepCount()[0][userID]} steps</p>`;
       });
 
       list += `<li class="friends_li">
-              <p class="friends--steps"><b>Highest step count:</b>
-              ${highestStepCountUserName}</p>`;
+              <p class="friends--steps"><b>Highest step count:</b><span class="italic-name highest-step-name">
+              ${highestStepCountUserName}</span></p>`;
       list += `</ul>`;
       return list;
     }

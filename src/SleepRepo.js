@@ -44,13 +44,12 @@ class SleepRepo {
     return goodSleepers
   }
 
-  returnWeeklyLongestSleepers(date, metric) {
+  returnWeeklyLongestSleeper(date, metric) {
     let totalSleepPerUser = this.returnUsersWeeklyTotals(date, metric)
     return [Number(Math.max(...totalSleepPerUser).toFixed(1)), totalSleepPerUser.indexOf(Math.max(...totalSleepPerUser)) + 1];
   }
 
-
-  returnLongestSleepers(date) {
+  returnLongestSleeper(date) {
     var dateData = this.sleepData.filter(day => day.date === date);
     var sortedSleepers = [...dateData].sort((a, b) => b.hoursSlept - a.hoursSlept);
     return sortedSleepers.filter(day => day.hoursSlept === sortedSleepers[0].hoursSlept).map(user => user.userID);
