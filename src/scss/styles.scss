@@ -293,7 +293,7 @@ input {
   }
 
   .date {
-    font-size: 185%;
+    font-size: 2em;
   }
 
   .name-date-wrapper {
@@ -334,7 +334,7 @@ input {
   .date {
     width: 65%;
     height: 30px;
-    font-size: 1.1em;
+    font-size: 1em;
     color: $data-card-background-color;
     margin-bottom: 0;
   }
@@ -343,7 +343,7 @@ input {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    font-size: 195%;
+    font-size: 2em;
   }
 
   .grid {
@@ -435,9 +435,13 @@ input {
     font-weight: 600;
   }
 
+  .dates {
+    font-size: 1.2em;
+  }
+
   .friends-steps-number {
-    font-size: 1em;
-    margin-top: 0;
+    font-size: 1.2em;
+    margin-top: 8px;
     padding-top: 0;
   }
 
