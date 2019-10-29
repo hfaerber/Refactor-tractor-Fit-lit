@@ -71,38 +71,38 @@
             <button class="show__activity--btn" type="button" name="button">Post Activity Stats</button>
             <button class="show__sleep--btn" type="button" name="button">Post Sleep Stats</button>
           </div>
-          <section class="data-subsection  post-section">
+          <section class="data-subsection post-section">
             <h3 class="subtext">Input your stats</h3>
             <form class="sleep-form" action="index.html" method="post">
               <div class="input-container">
-                <label for="hours-slept">Hours Slept</label>
-                <input class="hours-slept" type="number" step="any" min="0" name="hours-slept" placeholder="Enter Numerical Data" required>
+                <label class="form-label" for="hours-slept">Hours Slept</label>
+                <input class="hours-slept" name="hours-slept" id="hours-slept" type="number" step="any" min="0" name="hours-slept" placeholder="Enter Numerical Data" required>
               </div>
               <div class="input-container">
-                <label for="sleep-quality">Sleep Quality</label>
-                <input class="sleep-quality" type="number" step="any" min="0" name="sleep-quality" placeholder="Enter Numerical Data" required>
+                <label class="form-label" for="sleep-quality">Sleep Quality</label>
+                <input class="sleep-quality" id="sleep-quality" type="number" step="any" min="0" name="sleep-quality" placeholder="Enter Numerical Data" required>
               </div>
               <button class="sleep__submit--btn" type="submit">Submit Data</button>
             </form>
             <form class="hydration-form" action="index.html" method="post">
               <div class="input-container">
-                <label for="num-ounces">Ounces Drank</label>
-                <input class="num-ounces" type="number" step="any" min="0" name="num-ounces" placeholder="Enter Numerical Data" required>
+                <label class="form-label" for="number-of-ounces">Ounces Drank</label>
+                <input class="num-ounces" id="number-of-ounces" type="number" step="any" min="0" name="num-ounces" placeholder="Enter Numerical Data" required>
               </div>
               <button class="hydration__submit--btn" type="submit">Submit Data</button>
             </form>
             <form class="activity-form" action="index.html" method="post">
               <div class="input-container">
-                <label for="num-steps">Number of Steps</label>
-                <input class="num-steps" type="number" step="any" min="0" name="num-steps" placeholder="Enter Numerical Data" required>
+                <label class="form-label" for="number-of-steps">Number of Steps</label>
+                <input class="num-steps" id="number-of-steps" type="number" step="any" min="0" name="num-steps" placeholder="Enter Numerical Data" required>
               </div>
               <div class="input-container">
-                <label for="minutes-active">Minutes Active</label>
-                <input class="minutes-active" type="number" step="any" min="0" name="minutes-active" placeholder="Enter Numerical Data" required>
+                <label class="form-label" for="minutes-active">Minutes Active</label>
+                <input class="minutes-active" id="minutes-active" type="number" step="any" min="0" name="minutes-active" placeholder="Enter Numerical Data" required>
               </div>
               <div class="input-container">
-                <label for="flights-stairs">Flights of Stairs</label>
-                <input class="flights-stairs" type="number" step="any" min="0" name="flights-stairs" placeholder="Enter Numerical Data" required>
+                <label class="form-label" for="flights-of-stairs">Flights of Stairs</label>
+                <input class="flights-stairs" id="flights-of-stairs" type="number" step="any" min="0" name="flights-stairs" placeholder="Enter Numerical Data" required>
               </div>
               <button class="activity__submit--btn" type="submit">Submit Data</button>
             </form>

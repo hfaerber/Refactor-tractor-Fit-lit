@@ -224,7 +224,7 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 300px;
+  height: 350px;
 }
 
 .hydration-form {
@@ -245,6 +245,7 @@ form {
 .show__hydration--btn,
 .show__activity--btn,
 .show__sleep--btn {
+  border-radius: 3px;
   height: 100%;
     &:hover {
       @include btn-hover(#4C8BE4, 1px solid black, white)
@@ -254,6 +255,9 @@ form {
 .activity__submit--btn,
 .hydration__submit--btn,
 .sleep__submit--btn {
+  border-radius: 3px;
+  height: 60px;
+  width: auto;
     &:hover {
       @include btn-hover(#4C8BE4, 1px solid black, white)
     }
@@ -262,15 +266,21 @@ form {
 .input-container {
   display: flex;
   flex-direction: column;
-  height: 50px;
-  justify-content: space-between;
-  text-indent: 3px;
+  height: 65px;
   text-align: left;
+  text-indent: 3px;
   width: 100%;
 }
 
+.form-label {
+  font-size: 16px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
 input {
-  height: 30px;
+  border-radius: 3px;
+  height: 40px;
   width: 90%;
     &:valid {
     border: 3px solid green;
