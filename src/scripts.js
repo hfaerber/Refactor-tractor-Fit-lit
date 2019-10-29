@@ -369,7 +369,6 @@ $('.hydration__submit--btn').on('click', postHydration);
 
 function postSleep(event) {
   event.preventDefault();
-  console.log('got into sleep!');
   const sleepBody =
     {
       userID: uniqueUserID,
@@ -394,7 +393,6 @@ function postSleep(event) {
 
 function postActivity(event) {
   event.preventDefault();
-  console.log('made it into activity!');
   const activityBody =
     {
       userID: uniqueUserID,
@@ -421,7 +419,6 @@ function postActivity(event) {
 
 function postHydration(event) {
   event.preventDefault();
-  console.log('and looky here, we got into hydration too!');
   const hydrationBody =
     {
       userID: uniqueUserID,
