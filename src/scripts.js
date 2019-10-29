@@ -426,7 +426,7 @@ function postHydration(event) {
     {
       userID: uniqueUserID,
       date: today,
-      numOunces: $('.num-ounces').value=''
+      numOunces: $('.num-ounces').val()
     };
 
   if ($('.num-ounces').length > 0) {
@@ -441,21 +441,3 @@ function postHydration(event) {
     $('.num-ounces').val('')
   }
 }
-
-// function resetSleepForm() {
-//   if ($('.hours-slept').length > 0 && $('.sleep-quality').length > 0) {
-//     $(".sleep-form").reset();
-//   }
-// }
-//
-// function resetActivityForm() {
-//   if ($('.num-steps').length > 0 && $('.minutes-active').length > 0 && $('.flights-stairs').length > 0) {
-//     $('.activity-form').reset();
-//   }
-// }
-//
-// function resetHydrationForm() {
-//   if ($('.num-ounces').length > 0) {
-//     $('.hydration-form').reset();
-//   }
-// }
