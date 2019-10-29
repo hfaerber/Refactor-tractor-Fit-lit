@@ -41,7 +41,7 @@ canvas {
   float: right;
   margin: 5px;
   padding: 3px 5px;
-  @include font-look(2.2em, 600);
+  @include font-look(210%, 600);
 }
 
 .welcome-message {
@@ -281,6 +281,34 @@ input {
   color: $yellow-data-info;
 }
 
+@media screen and (max-width: 870px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+  }
+
+  .welcome-message {
+    padding: 0;
+  }
+
+  .date {
+    font-size: 2em;
+  }
+
+  .name-date-wrapper {
+    flex-direction: column-reverse;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+  }
+
+  .data-section {
+    width: 80%;
+    
+  }
+}
+
 @media screen and (max-width: 600px) {
   body {
     display: flex;
@@ -300,14 +328,14 @@ input {
   .name-date-wrapper {
     display: flex;
     flex-direction: column-reverse;
+    text-align: center;
   }
 
   .date {
     width: 65%;
     height: 30px;
-    font-size: .8em;
+    font-size: 1em;
     color: #fff;
-    float: left;
     margin-bottom: 0;
   }
 
@@ -315,10 +343,7 @@ input {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    font-size: 170%;
-    width: 100%;
-    margin-left: -38px;
-    margin-bottom: -5px;
+    font-size: 2em;
   }
 
   .grid {
@@ -410,9 +435,13 @@ input {
     font-weight: 600;
   }
 
+  .dates {
+    font-size: 1.2em;
+  }
+
   .friends-steps-number {
-    font-size: 1em;
-    margin-top: 0;
+    font-size: 1.2em;
+    margin-top: 8px;
     padding-top: 0;
   }
 
