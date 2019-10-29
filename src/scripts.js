@@ -22,7 +22,6 @@ import './images/trophy.svg'
 
 //Generate random user
 const uniqueUserID = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
-console.log('uniqueUserID', uniqueUserID);
 //Date
 let today = new Date();
 findTodaysDate();
@@ -116,14 +115,14 @@ fetchData('users/userData')
             {
               data: sleep.returnWeekOfSleepInfo(today, 'sleepQuality'),
               label: "Quality of Sleep",
-              borderColor: "rgba(242, 188, 51, 0.6)",
+              borderColor: "rgba(11, 117, 2, 0.6)",
               fill: false,
               lineTension: 0.1
             },
             {
               data: Array(7).fill(sleep.returnAvgUserStatForWeek(today, 'sleepQuality')),
               label: "Average Quality of Sleep",
-              borderColor: "rgba(242, 188, 51, 0.6)",
+              borderColor: "rgba(11, 117, 2, 0.6)",
               fill: false,
               borderDash: [10, 5]
             }
@@ -157,7 +156,7 @@ fetchData('users/userData')
                   beginAtZero: true,
                   min: 0,
                   max: 10,
-                  fontColor: "rgba(242, 188, 51, 0.6)"
+                  fontColor: "rgba(11, 117, 2, 0.6)"
                 },
                 scaleLabel: {
                   display: true,
@@ -170,7 +169,8 @@ fetchData('users/userData')
 
         $('.longest-sleeper').text(`${findUserName(
           sleepRepo.returnWeeklyLongestSleeper(today, 'hoursSlept')[1])}:
-            ${sleepRepo.returnWeeklyLongestSleeper(today, 'hoursSlept')[0]} hours`);
+            ${sleepRepo.returnWeeklyLongestSleeper(today, 'hoursSlept')[0]}
+              hours`);
 
       })
 
@@ -197,11 +197,11 @@ fetchData('users/userData')
       autoStyleContainer: true
     },
     from: {
-      color: '#fff940',
+      color: '#0BAA02',
       width: 2
     },
     to: {
-      color: '#f2bc33',
+      color: '#0B7502',
       width: 5
     },
     step(state, circle) {
@@ -211,26 +211,40 @@ fetchData('users/userData')
       if (value === 0) {
         circle.setText('');
       } else {
-        circle.setText(`${activity.returnIndividualStatForDate(today, 'numSteps')} steps`);
+        circle.setText(`${activity.returnIndividualStatForDate(today,
+          'numSteps')} steps`);
       }
     }
   });
 
-    let percentSteps = activity.returnIndividualStatForDate(today, 'numSteps') / user.dailyStepGoal;
-    bar.animate(percentSteps > 1 ? percentSteps = 1 : percentSteps); // Number from 0.0 to 1.0
+    let percentSteps = activity.returnIndividualStatForDate(today, 'numSteps')
+      / user.dailyStepGoal;
+    bar.animate(percentSteps > 1 ? percentSteps = 1 : percentSteps);
     $('.number-of-steps-goal').text(`Step Goal: ${user.dailyStepGoal}`);
-    $('.avg-number-of-steps-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
-    $('.number-of-minutes-active-day').text(`${activity.returnIndividualStatForDate(today, 'minutesActive')}`);
-    $('.average-minutes-active').text(`${activityRepo.returnAverage(today, 'minutesActive')}`)
-    $('.distance').text(`${activity.returnIndividualStatForDate(today, 'numSteps')}`);
-    $('.average-distance').text(`${activityRepo.returnAverage(today, 'numSteps')}`)
-    $('.stairs').text(`${activity.returnIndividualStatForDate(today, 'flightsOfStairs')}`);
-    $('.average-stairs').text(`${activityRepo.returnAverage(today, 'flightsOfStairs')}`)
+    $('.avg-number-of-steps-goal').text
+      (`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
+    $('.number-of-minutes-active-day').text
+      (`${activity.returnIndividualStatForDate(today, 'minutesActive')}`);
+    $('.average-minutes-active').text
+      (`${activityRepo.returnAverage(today, 'minutesActive')}`)
+    $('.distance').text(`${activity.returnIndividualStatForDate
+        (today, 'numSteps')}`);
+    $('.average-distance').text(`${activityRepo.returnAverage
+        (today, 'numSteps')}`)
+    $('.stairs').text(`${activity.returnIndividualStatForDate
+        (today, 'flightsOfStairs')}`);
+    $('.average-stairs').text(`${activityRepo.returnAverage
+        (today, 'flightsOfStairs')}`)
     $('.distance-in-miles').text(`${activity.returnMilesWalked(today)} Miles`);
-    $('.most-active').text(`${activityRepo.returnMostActive('minutesActive')[0]}: ${activityRepo.returnMostActive('minutesActive')[1]} minutes`);
-    $('.week-review-minutes').text(`${activity.returnAvgUserStatForWeek(today, 'minutesActive')} minutes active`);
-    $('.week-review-steps').text(`${activity.returnAvgUserStatForWeek(today, 'numSteps')} steps taken`);
-    $('.week-review-stairs').text(`${activity.returnAvgUserStatForWeek(today, 'flightsOfStairs')} flights of stairs`);
+    $('.most-active').text(`${activityRepo.returnMostActive
+        ('minutesActive')[0]}: ${activityRepo.returnMostActive
+          ('minutesActive')[1]} minutes`);
+    $('.week-review-minutes').text(`${activity.returnAvgUserStatForWeek
+      (today, 'minutesActive')} minutes active`);
+    $('.week-review-steps').text(`${activity.returnAvgUserStatForWeek
+      (today, 'numSteps')} steps taken`);
+    $('.week-review-stairs').text(`${activity.returnAvgUserStatForWeek
+      (today, 'flightsOfStairs')} flights of stairs`);
 
     // Friends
     let userIDs = Object.keys(activity.returnFriendsStepCount()[0]);
@@ -242,11 +256,13 @@ fetchData('users/userData')
         let userName = findUserName(Number(userID));
         list += `<li class="friends_li">
                <p class="friends--steps">${userName}:</p>
-               <p class="friends-steps-number">${activity.returnFriendsStepCount()[0][userID]} steps</p>`;
+               <p class="friends-steps-number">${activity.returnFriendsStepCount
+                 ()[0][userID]} steps</p>`;
       });
       list += `<li class="friends_li">
-              <p class="friends--steps"><b>Highest step count:</b><span class="italic-name highest-step-name">
-              ${highestStepCountUserName}</span></p>`;
+              <p class="friends--steps"><b>Highest step count:</b>
+                <span class="italic-name highest-step-name">
+                  ${highestStepCountUserName}</span></p>`;
       list += `</ul>`;
       return list;
     }
@@ -295,10 +311,10 @@ fetchData('users/userData')
           data: hydration.returnWeeklyNumOunces(),
           backgroundColor: [
             'rgba(92, 117, 218, 0.6)',
-            'rgba(242, 188, 51, 0.6)',
+            'rgba(11, 117, 2, 0.6)',
             'rgba(126, 221, 255, 0.6)',
             'rgba(92, 117, 218, 0.6)',
-            'rgba(242, 188, 51, 0.6)',
+            'rgba(11, 117, 2, 0.6)',
             'rgba(126, 221, 255, 0.6)',
             'rgba(92, 117, 218, 0.6)'
           ],
@@ -326,7 +342,6 @@ fetchData('users/userData')
 })
 
 .catch(error => console.log('userData error'));
-// *****END OF .THEN FOR USERDATA**************************
 
 // Event listeners for show post-data form buttons
 $('.show__activity--btn').on('click', function() {
