@@ -369,7 +369,6 @@ $('.hydration__submit--btn').on('click', postHydration);
 
 function postSleep(event) {
   event.preventDefault();
-  console.log('got into sleep!');
   const sleepBody =
     {
       userID: uniqueUserID,
@@ -385,13 +384,15 @@ function postSleep(event) {
         'Content-Type': "application/json"
       },
       body: JSON.stringify(sleepBody)
-    })
+    });
+
+    $('.hours-slept').val('');
+    $('.sleep-quality').val('');
   }
 };
 
 function postActivity(event) {
   event.preventDefault();
-  console.log('made it into activity!');
   const activityBody =
     {
       userID: uniqueUserID,
@@ -408,13 +409,16 @@ function postActivity(event) {
           'Content-Type': "application/json"
         },
       body: JSON.stringify(activityBody)
-    })
+    });
+
+    $('.num-steps').val('');
+    $('.minutes-active').val('');
+    $('.flights-stairs').val('')
   }
 };
 
 function postHydration(event) {
   event.preventDefault();
-  console.log('and looky here, we got into hydration too!');
   const hydrationBody =
     {
       userID: uniqueUserID,
@@ -429,6 +433,8 @@ function postHydration(event) {
           'Content-Type': "application/json"
         },
       body: JSON.stringify(hydrationBody)
-    })
+    });
+
+    $('.num-ounces').val('')
   }
 }
