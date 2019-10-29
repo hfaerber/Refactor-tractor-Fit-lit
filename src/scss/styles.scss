@@ -41,7 +41,7 @@ canvas {
   float: right;
   margin: 5px;
   padding: 3px 5px;
-  @include font-look(210%, 600);
+  @include font-look(2.2em, 600);
 }
 
 .welcome-message {
