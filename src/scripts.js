@@ -370,7 +370,10 @@ function postSleep(event) {
         'Content-Type': "application/json"
       },
       body: JSON.stringify(sleepBody)
-    })
+    });
+
+    $('.hours-slept').val('');
+    $('.sleep-quality').val('');
   }
 };
 
@@ -393,7 +396,11 @@ function postActivity(event) {
           'Content-Type': "application/json"
         },
       body: JSON.stringify(activityBody)
-    })
+    });
+
+    $('.num-steps').val('');
+    $('.minutes-active').val('');
+    $('.flights-stairs').val('')
   }
 };
 
@@ -404,7 +411,7 @@ function postHydration(event) {
     {
       userID: uniqueUserID,
       date: today,
-      numOunces: $('.num-ounces').val()
+      numOunces: $('.num-ounces').value=''
     };
 
   if ($('.num-ounces').length > 0) {
@@ -414,6 +421,26 @@ function postHydration(event) {
           'Content-Type': "application/json"
         },
       body: JSON.stringify(hydrationBody)
-    })
+    });
+
+    $('.num-ounces').val('')
   }
 }
+
+// function resetSleepForm() {
+//   if ($('.hours-slept').length > 0 && $('.sleep-quality').length > 0) {
+//     $(".sleep-form").reset();
+//   }
+// }
+//
+// function resetActivityForm() {
+//   if ($('.num-steps').length > 0 && $('.minutes-active').length > 0 && $('.flights-stairs').length > 0) {
+//     $('.activity-form').reset();
+//   }
+// }
+//
+// function resetHydrationForm() {
+//   if ($('.num-ounces').length > 0) {
+//     $('.hydration-form').reset();
+//   }
+// }

@@ -246,8 +246,10 @@ form {
 .show__activity--btn,
 .show__sleep--btn {
   border-radius: 3px;
+  cursor: pointer;
   height: 100%;
-    &:hover {
+    &:hover,
+    &:focus {
       @include btn-hover(#4C8BE4, 1px solid black, white)
     }
 }
@@ -256,9 +258,11 @@ form {
 .hydration__submit--btn,
 .sleep__submit--btn {
   border-radius: 3px;
+  cursor: pointer;
   height: 60px;
   width: auto;
-    &:hover {
+    &:hover,
+    &:focus {
       @include btn-hover(#4C8BE4, 1px solid black, white)
     }
 }
@@ -280,6 +284,7 @@ form {
 
 input {
   border-radius: 3px;
+  cursor: pointer;
   height: 40px;
   width: 90%;
     &:valid {
