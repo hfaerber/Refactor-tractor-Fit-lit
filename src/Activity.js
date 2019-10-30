@@ -7,7 +7,8 @@ class Activity extends Utility {
   }
 
   returnMilesWalked(date) {
-    return Number((this.userData.strideLength * this.singleUserData.find(day => day.date === date).numSteps / 5280).toFixed(2))
+    return Number((this.userData.strideLength * this.singleUserData.find
+      (day => day.date === date).numSteps / 5280).toFixed(2))
   }
 
   metStepGoal(date) {
@@ -17,17 +18,21 @@ class Activity extends Utility {
 
   returnAllStepGoalDays() {
     let stepGoal = this.userData.dailyStepGoal;
-    return this.singleUserData.filter(day => day.numSteps >= stepGoal).map(day => day.date);
+    return this.singleUserData.filter(day => day.numSteps >= stepGoal).map
+      (day => day.date);
   }
 
   returnStairRecord() {
-    return [...this.singleUserData].sort((a, b) => b.flightsOfStairs - a.flightsOfStairs)[0].flightsOfStairs
+    return [...this.singleUserData].sort((a, b) =>
+    b.flightsOfStairs - a.flightsOfStairs)[0].flightsOfStairs
   }
 
   returnFriendsStepCount() {
-    let friends = this.userData.friends.map(friend => this.dataSet.filter(el => el.userID === friend));
+    let friends = this.userData.friends.map(friend => this.dataSet.filter
+      (el => el.userID === friend));
     let friendDataForDates = friends.map(friend => [...friend].splice(-7));
-    let totalStepsPerFriend = friendDataForDates.map(friend => friend.reduce((totalSteps, day) => {
+    let totalStepsPerFriend = friendDataForDates.map(friend => friend.reduce
+      ((totalSteps, day) => {
       totalSteps += day.numSteps
       return totalSteps
     }, 0));
@@ -35,14 +40,16 @@ class Activity extends Utility {
       friendSteps[friend] = totalStepsPerFriend[index];
       return friendSteps
     }, {})
-    return [stepObj, this.userData.friends[totalStepsPerFriend.indexOf(Math.max(...totalStepsPerFriend))]]
+    return [stepObj, this.userData.friends[totalStepsPerFriend.indexOf
+      (Math.max(...totalStepsPerFriend))]]
   }
 
   returnThreeDayStepStreak() {
     let specificUser = this.singleUserData.reverse();
     let dates = [];
     specificUser.some((user, i, specificUser) => {
-      if (specificUser[i].numSteps < specificUser[i + 1].numSteps && specificUser[i + 1].numSteps < specificUser[i + 2].numSteps) {
+      if (specificUser[i].numSteps < specificUser[i + 1].numSteps &&
+        specificUser[i + 1].numSteps < specificUser[i + 2].numSteps) {
         dates.push(specificUser[i].date);
         dates.push(specificUser[i + 1].date);
         dates.push(specificUser[i + 2].date);

@@ -106,7 +106,8 @@ fetchData('users/userData')
             },
 
             {
-              data: Array(7).fill(sleep.returnAvgUserStatForWeek(today, 'hoursSlept')),
+              data: Array(7).fill(sleep.returnAvgUserStatForWeek
+                (today, 'hoursSlept')),
               label: "Average Hours of Sleep",
               borderColor: "rgba(92, 117, 218, 0.6)",
               fill: false,
@@ -120,7 +121,8 @@ fetchData('users/userData')
               lineTension: 0.1
             },
             {
-              data: Array(7).fill(sleep.returnAvgUserStatForWeek(today, 'sleepQuality')),
+              data: Array(7).fill(sleep.returnAvgUserStatForWeek
+                (today, 'sleepQuality')),
               label: "Average Quality of Sleep",
               borderColor: "rgba(11, 117, 2, 0.6)",
               fill: false,
@@ -179,7 +181,8 @@ fetchData('users/userData')
   // Fetch activityData
   fetchData('activity/activityData')
   .then(activityData => {
-    const activityRepo = new ActivityRepo(activityData.activityData, userData.userData);
+    const activityRepo = new ActivityRepo(activityData.activityData,
+      userData.userData);
     const activity = new Activity(activityData.activityData, user.id, user);
 
   //Activity Section
@@ -302,8 +305,10 @@ fetchData('users/userData')
     const hydration = new Hydration(hydrationData.hydrationData, user.id);
 
     //Hydration
-    $('.water-consumed').text(`${hydration.returnIndividualStatForDate(today, "numOunces")} ounces \n\n`);
-    const weeklyOuncesChart = new Chart(document.getElementById('water-consumed-week').getContext('2d'), {
+    $('.water-consumed').text(`${hydration.returnIndividualStatForDate
+      (today, "numOunces")} ounces \n\n`);
+    const weeklyOuncesChart = new Chart(document.getElementById
+      ('water-consumed-week').getContext('2d'), {
       type: 'horizontalBar',
       data: {
         labels: dropYear(hydration.returnWeekDatesOnly(today)),
@@ -402,7 +407,8 @@ function postActivity(event) {
       flightsOfStairs: $('.flights-stairs').val()
     }
 
-  if ($('.num-steps').length > 0 && $('.minutes-active').length > 0 && $('.flights-stairs').length > 0) {
+  if ($('.num-steps').length > 0 && $('.minutes-active').length > 0 && $
+    ('.flights-stairs').length > 0) {
     fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData', {
       method: 'POST',
       headers: {
